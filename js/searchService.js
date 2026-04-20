@@ -22,8 +22,17 @@ import { showPopup } from './popupService.js';
 // ---------------------------------------------------------------------------
 
 /** URL de base de l'API FeatureServer du SITG pour les bâtiments PV. */
-const SITG_SEARCH_URL =
+const SITG_BASE_URL =
     'https://vector.sitg.ge.ch/arcgis/rest/services/OCEN_SOLAIRE_PV_BATIMENT/FeatureServer/0/query';
+
+/**
+ * Préfixe le proxy Vercel sur une URL SITG pour résoudre le CORS en production.
+ * La réponse bénéficiera du cache CDN Vercel (24h) défini dans api/proxy.js.
+ *
+ * @param {string} sitgUrl - L'URL SITG à proxyfier.
+ * @returns {string} L'URL passant par le proxy.
+ */
+const withProxy = (sitgUrl) => `/api/proxy?url=${encodeURIComponent(sitgUrl)}`;
 
 /** Nombre maximum de résultats retournés par la recherche. */
 const MAX_RESULTS = 15;
@@ -95,10 +104,14 @@ const buildWhereClause = (normalizedQuery) => {
  * @param {HTMLInputElement} config.searchInput      - Le champ de saisie de l'adresse.
  * @param {HTMLElement}      config.resultsContainer - Le conteneur de la liste de résultats.
  * @param {L.Map}            config.map              - L'instance Leaflet de la carte.
+ * @param {Map}              config.cachedFeatures  - Le cache partagé OBJECTID -> Feature de map.js.
+ *                                                     Permet d'éviter le re-téléchargement du bâtiment
+ *                                                     sélectionné lors du moveend consécutif au zoom.
  */
-export function initSearch({ searchInput, resultsContainer, map }) {
+export function initSearch({ searchInput, resultsContainer, map, cachedFeatures }) {
     let debounceTimer;
-    let currentLayer = null; // Calque du bâtiment sélectionné (surbrillance)
+    let searchAbortController = null; // AbortController dédié à la recherche
+    let currentLayer = null;          // Calque du bâtiment sélectionné (surbrillance)
 
     // --- Fermeture des résultats sur clic extérieur ---
     document.addEventListener('click', (e) => {
@@ -132,10 +145,16 @@ export function initSearch({ searchInput, resultsContainer, map }) {
         const whereClause = buildWhereClause(normalizeQuery(query));
         if (!whereClause) return;
 
-        const url = `${SITG_SEARCH_URL}?where=${encodeURIComponent(whereClause)}&outFields=OBJECTID,ADRESSE,PV_AN_TOT,CO2,INVEST_TOT,GAINS_AN,PATRIM&outSR=4326&f=geojson&resultRecordCount=${MAX_RESULTS}`;
+        // Annuler la recherche précédente si elle est encore en vol
+        if (searchAbortController) searchAbortController.abort();
+        searchAbortController = new AbortController();
+        const { signal } = searchAbortController;
+
+        const sitgUrl = `${SITG_BASE_URL}?where=${encodeURIComponent(whereClause)}&outFields=OBJECTID,ADRESSE,PV_AN_TOT,CO2,INVEST_TOT,GAINS_AN,PATRIM&outSR=4326&f=geojson&resultRecordCount=${MAX_RESULTS}`;
+        const url = withProxy(sitgUrl);
 
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, { signal });
             const data = await response.json();
 
             if (data.features && data.features.length > 0) {
@@ -146,6 +165,7 @@ export function initSearch({ searchInput, resultsContainer, map }) {
                 resultsContainer.style.display = 'block';
             }
         } catch (error) {
+            if (error.name === 'AbortError') return; // Annulation intentionnelle
             console.error('[searchService] Erreur lors de la recherche :', error);
         }
     }
@@ -180,6 +200,12 @@ export function initSearch({ searchInput, resultsContainer, map }) {
      */
     function _selectBuilding(feature) {
         if (currentLayer) map.removeLayer(currentLayer);
+
+        // Pré-enregistrer dans le cache partagé pour éviter un double fetch
+        // lors du 'moveend' déclenché par le fitBounds ci-dessous.
+        if (cachedFeatures && !cachedFeatures.has(feature.properties.OBJECTID)) {
+            cachedFeatures.set(feature.properties.OBJECTID, feature);
+        }
 
         currentLayer = L.geoJSON(feature, {
             style: { color: '#0f172a', weight: 4, fillColor: '#fcd34d', fillOpacity: 0.8 },

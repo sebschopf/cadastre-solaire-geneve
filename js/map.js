@@ -77,7 +77,7 @@ export function initMap() {
     // --- Initialisation des services ---
     updateLegend(currentTheme, legendElement);
 
-    initSearch({ searchInput, resultsContainer, map });
+    initSearch({ searchInput, resultsContainer, map, cachedFeatures });
 
     // -------------------------------------------------------------------------
     // Rendu des bâtiments
