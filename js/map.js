@@ -111,11 +111,14 @@ export function initMap() {
         const bounds = map.getBounds();
         const bbox = `${bounds.getWest()},${bounds.getSouth()},${bounds.getEast()},${bounds.getNorth()}`;
         
-        const url = `https://vector.sitg.ge.ch/arcgis/rest/services/OCEN_SOLAIRE_PV_BATIMENT/FeatureServer/0/query?geometry=${bbox}&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID,ADRESSE,PV_AN_TOT,CO2,INVEST_TOT,GAINS_AN,PATRIM&outSR=4326&f=geojson`;
+        // Utilisation d'un proxy CORS pour éviter le blocage sur Vercel
+        const sitgUrl = `https://vector.sitg.ge.ch/arcgis/rest/services/OCEN_SOLAIRE_PV_BATIMENT/FeatureServer/0/query?geometry=${bbox}&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID,ADRESSE,PV_AN_TOT,CO2,INVEST_TOT,GAINS_AN,PATRIM&outSR=4326&f=geojson`;
+        const url = `https://api.allorigins.win/get?url=${encodeURIComponent(sitgUrl)}`;
 
         try {
             const response = await fetch(url);
-            const data = await response.json();
+            const proxyData = await response.json();
+            const data = JSON.parse(proxyData.contents);
             if (data.features) {
                 renderDynamicFeatures(data.features);
             }
