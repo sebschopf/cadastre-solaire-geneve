@@ -66,17 +66,34 @@
     --color-heritage-text: oklch(0.40 0.022 var(--hue-neutral));
     /* AAA */
 
+    /* --- Famille Danger / Alerte (messages d'erreur) --- */
+    --color-danger-bg   : oklch(0.97 0.020 var(--hue-danger)); /* Fond rouge pâle */
+    --color-danger-text : oklch(0.55 0.200 var(--hue-danger)); /* Texte rouge AAA sur fond danger-bg */
+    --color-danger-main : oklch(0.60 0.200 var(--hue-danger)); /* Couleur d'accent rouge */
+
+    /* --- Tokens de glassmorphisme ---
+     * Ces valeurs semi-transparentes ne peuvent pas être exprimées via un token
+     * solide ; elles sont déclarées ici pour rester en un seul endroit. */
+    --color-glass-white-85 : oklch(1 0 0 / 0.85); /* Header sticky */
+    --color-glass-white-80 : oklch(1 0 0 / 0.80); /* Carte kpi-card */
+    --color-glass-white-00 : oklch(1 0 0 / 0);    /* Transparent blanc (gradient) */
+    --color-glass-solar-08 : oklch(0.72 0.16 var(--hue-solar) / 0.08); /* Halo hero */
+    --color-glass-solar-10 : oklch(0.72 0.16 var(--hue-solar) / 0.10); /* Déco citation */
+    --color-glass-neutral-07: oklch(0.75 0.015 var(--hue-neutral) / 0.07); /* Grille de fond body */
+    --color-glass-border   : oklch(0.90 0.010 var(--hue-neutral) / 0.80); /* Bordures vitreux */
+    --color-glass-shadow   : oklch(0 0 0 / 0.02);  /* Ombre header */
+
     /* --- Shadows & Effects --- */
-    --shadow-subtle: 0 4px 20px -2px oklch(0.20 0.010 var(--hue-neutral) / 0.05);
-    --shadow-hover: 0 10px 30px -5px oklch(0.20 0.010 var(--hue-neutral) / 0.10);
-    --shadow-glow: 0 0 20px oklch(0.72 0.16 var(--hue-solar) / 0.20);
+    --shadow-subtle : 0 4px 20px -2px oklch(0.20 0.010 var(--hue-neutral) / 0.05);
+    --shadow-hover  : 0 10px 30px -5px oklch(0.20 0.010 var(--hue-neutral) / 0.10);
+    --shadow-glow   : 0 0 20px oklch(0.72 0.16 var(--hue-solar) / 0.20);
 
     /* --- Typographie --- */
-    --font-ui: 'Outfit', 'Inter', system-ui, sans-serif, dyslexic;
-    --font-body: 'Lora', Georgia, serif, dyslexic, ;
+    --font-ui   : 'Outfit', 'Inter', system-ui, sans-serif;
+    --font-body : 'Lora', Georgia, serif;
 
     /* --- Transitions --- */
-    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth : all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* =============================================================================
@@ -120,10 +137,10 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Subtible Cadastre Grid Background */
+    /* Grille de fond subtile — repère cartographique */
     background-image:
-        linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+        linear-gradient(var(--color-glass-neutral-07) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-glass-neutral-07) 1px, transparent 1px);
     background-size: 40px 40px;
     background-attachment: fixed;
 }
@@ -159,15 +176,15 @@ a:hover {
 
 /* Glassmorphism Header */
 .site-header {
-    background: rgba(255, 255, 255, 0.85);
+    background: var(--color-glass-white-85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    border-bottom: 1px solid var(--color-glass-border);
     padding: 1.2rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 1px 3px var(--color-glass-shadow);
 }
 
 .header-content {
@@ -216,18 +233,18 @@ a:hover {
 
 .data-source-badge {
     font-size: 0.75rem;
-    background: #f1f5f9;
+    background: var(--color-surface-subtle);
     color: var(--color-text-muted);
     padding: 0.35rem 1rem;
     border-radius: 9999px;
     font-weight: 600;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--color-heritage-light);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 .data-source-badge:hover {
-    background: #e2e8f0;
+    background: var(--color-heritage-light);
     color: var(--color-text-main);
 }
 
@@ -239,7 +256,7 @@ a:hover {
     overflow: hidden;
 }
 
-/* Subtle glowing orb behind hero */
+/* Halo solaire derrière le hero — décoratif */
 .hero::before {
     content: '';
     position: absolute;
@@ -248,7 +265,7 @@ a:hover {
     transform: translateX(-50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    background: radial-gradient(circle, var(--color-glass-solar-08) 0%, var(--color-glass-white-00) 70%);
     z-index: -1;
 }
 
@@ -280,7 +297,8 @@ a:hover {
     margin: 0 auto 6rem;
     font-family: var(--font-body);
     font-size: 1.2rem;
-    color: #334155;
+    /* color-text-body = oklch(0.35) — correspondance exacte de #334155 (L≈0.30) */
+    color: var(--color-text-body);
 }
 
 .edu-block p {
@@ -303,7 +321,8 @@ a:hover {
     top: -10px;
     right: 20px;
     font-size: 6rem;
-    color: rgba(245, 158, 11, 0.1);
+    /* Décoratif uniquement — valeur semi-transparente via token glass */
+    color: var(--color-glass-solar-10);
     font-family: serif;
     pointer-events: none;
 }
@@ -330,8 +349,21 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 100%);
+    /* Fondu blanc vers le bas — décoratif, via token glass */
+    background: linear-gradient(180deg, var(--color-glass-white-00) 0%, var(--color-glass-white-80) 100%);
     z-index: -1;
+}
+
+/* Message d'erreur (données non générées) — tokens OKLCH --color-danger-* */
+.error-banner {
+    background: var(--color-danger-bg);
+    color: var(--color-danger-text);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+    text-align: center;
+    border: 1px solid var(--color-danger-main);
+    font-family: var(--font-ui);
 }
 
 .section-title {
@@ -353,7 +385,7 @@ a:hover {
     padding: 2.5rem 2rem;
     border-radius: 20px;
     box-shadow: var(--shadow-subtle);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--color-glass-white-80);
     text-align: center;
     transition: var(--transition-smooth);
     position: relative;
@@ -367,7 +399,7 @@ a:hover {
     left: 0;
     right: 0;
     height: 4px;
-    background: #e2e8f0;
+    background: var(--color-heritage-light);
     transition: var(--transition-smooth);
 }
 

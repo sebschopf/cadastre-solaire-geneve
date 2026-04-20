@@ -47,12 +47,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const dashboard = document.querySelector('.dashboard-section .container');
         if (dashboard) {
             const errorDiv = document.createElement('div');
-            errorDiv.style.backgroundColor = '#fef2f2';
-            errorDiv.style.color = '#ef4444';
-            errorDiv.style.padding = '1.5rem';
-            errorDiv.style.borderRadius = '12px';
-            errorDiv.style.marginTop = '2rem';
-            errorDiv.style.textAlign = 'center';
+            // Pas d'inline style — la classe error-banner hérite des tokens OKLCH (style.css)
+            errorDiv.className = 'error-banner';
+            errorDiv.setAttribute('role', 'alert');
             errorDiv.innerHTML = '<strong>Données non trouvées.</strong> Veuillez exécuter le script <code>node scripts/generate_summary.js</code> pour générer les données de synthèse depuis le fichier officiel OCEN.';
             dashboard.prepend(errorDiv);
         }
