@@ -565,8 +565,10 @@ a:hover {
 /* Footer */
 .site-footer {
     /* Fond sombre intentionnel : les textes clairs sur fond sombre restent AAA */
-    background-color: var(--color-text-main); /* oklch(0.20 ...) */
-    color: var(--color-heritage-main);         /* oklch(0.72 ...) sur fond sombre : ~4:1 AA */
+    background-color: var(--color-text-main);
+    /* oklch(0.20 ...) */
+    color: var(--color-heritage-main);
+    /* oklch(0.72 ...) sur fond sombre : ~4:1 AA */
     padding: 4rem 0;
     text-align: center;
     font-size: 0.95rem;
@@ -574,10 +576,12 @@ a:hover {
 
 /* Lien principal du footer (SITG) — eco-light sur fond sombre : contraste suffisant */
 .footer-link {
-    color: var(--color-eco-light); /* oklch(0.88 0.12 161) sur fond oklch(0.20) : ~6:1 */
+    color: var(--color-eco-light);
+    /* oklch(0.88 0.12 161) sur fond oklch(0.20) : ~6:1 */
     text-decoration: underline;
     text-underline-offset: 3px;
 }
+
 .footer-link:hover {
     color: var(--color-eco-main);
 }

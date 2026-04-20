@@ -5,7 +5,7 @@ import { initMap } from './map.js';
 const formatNum = (num) => new Intl.NumberFormat('fr-CH').format(Math.round(num));
 
 document.addEventListener('DOMContentLoaded', async () => {
-    
+
     // Initialisation de la carte (ne dépend pas des données globales)
     try {
         initMap();
@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch('data/summary.json');
         if (!response.ok) throw new Error('Impossible de charger les données.');
-        
+
         const data = await response.json();
-        
+
         // --- MISE À JOUR DES KPIs ---
         if (data.kpis) {
             const kpiGwh = document.getElementById('kpi-gwh');
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     } catch (error) {
         console.error("Erreur lors du chargement des données de synthèse :", error);
-        
+
         // Affichage d'un message d'erreur si le JSON n'est pas généré
         const dashboard = document.querySelector('.dashboard-section .container');
         if (dashboard) {

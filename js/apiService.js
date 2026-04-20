@@ -38,19 +38,32 @@ export async function fetchBuildings(bounds) {
     const north = roundCoord(bounds.getNorth());
     const bbox = `${west},${south},${east},${north}`;
 
-    const sitgUrl = `https://vector.sitg.ge.ch/arcgis/rest/services/OCEN_SOLAIRE_PV_BATIMENT/FeatureServer/0/query?geometry=${bbox}&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID,ADRESSE,PV_AN_TOT,CO2,INVEST_TOT,GAINS_AN,PATRIM&outSR=4326&f=geojson`;
+    /**
+     * Champs demandés au SITG.
+     * On ne demande que ce dont on a besoin (principe du moindre privilège).
+     * Ajout de : TRI (officiel), COMMUNE, AREA_PV_TOT, AREA_TOIT, P_KWC_TOT, SUB_AC_TOT, CONSO_PR
+     */
+    const FIELDS = [
+        'OBJECTID', 'ADRESSE', 'COMMUNE',
+        'PV_AN_TOT', 'CO2', 'P_KWC_TOT',
+        'AREA_PV_TOT', 'AREA_TOIT',
+        'INVEST_TOT', 'GAINS_AN', 'SUB_AC_TOT',
+        'CONSO_PR', 'TRI', 'PATRIM',
+    ].join(',');
+
+    const sitgUrl = `https://vector.sitg.ge.ch/arcgis/rest/services/OCEN_SOLAIRE_PV_BATIMENT/FeatureServer/0/query?geometry=${bbox}&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=${FIELDS}&outSR=4326&f=geojson`;
     const url = `/api/proxy?url=${encodeURIComponent(sitgUrl)}`;
 
     try {
         const response = await fetch(url, { signal });
-        
+
         if (!response.ok) {
             throw new Error(`Erreur réseau: ${response.status}`);
         }
-        
+
         const data = await response.json();
         return data.features || [];
-        
+
     } catch (error) {
         if (error.name === 'AbortError') {
             // La requête a été annulée par une nouvelle requête, c'est normal.

@@ -150,7 +150,15 @@ export function initSearch({ searchInput, resultsContainer, map, cachedFeatures 
         searchAbortController = new AbortController();
         const { signal } = searchAbortController;
 
-        const sitgUrl = `${SITG_BASE_URL}?where=${encodeURIComponent(whereClause)}&outFields=OBJECTID,ADRESSE,PV_AN_TOT,CO2,INVEST_TOT,GAINS_AN,PATRIM&outSR=4326&f=geojson&resultRecordCount=${MAX_RESULTS}`;
+        const FIELDS = [
+            'OBJECTID', 'ADRESSE', 'COMMUNE',
+            'PV_AN_TOT', 'CO2', 'P_KWC_TOT',
+            'AREA_PV_TOT', 'AREA_TOIT',
+            'INVEST_TOT', 'GAINS_AN', 'SUB_AC_TOT',
+            'CONSO_PR', 'TRI', 'PATRIM',
+        ].join(',');
+
+        const sitgUrl = `${SITG_BASE_URL}?where=${encodeURIComponent(whereClause)}&outFields=${FIELDS}&outSR=4326&f=geojson&resultRecordCount=${MAX_RESULTS}`;
         const url = withProxy(sitgUrl);
 
         try {
@@ -182,8 +190,8 @@ export function initSearch({ searchInput, resultsContainer, map, cachedFeatures 
             div.innerText = feature.properties.ADRESSE || 'Adresse inconnue';
 
             div.addEventListener('mouseover', () => (div.style.backgroundColor = '#f8fafc'));
-            div.addEventListener('mouseout',  () => (div.style.backgroundColor = 'transparent'));
-            div.addEventListener('click',     () => {
+            div.addEventListener('mouseout', () => (div.style.backgroundColor = 'transparent'));
+            div.addEventListener('click', () => {
                 _selectBuilding(feature);
                 resultsContainer.style.display = 'none';
                 searchInput.value = feature.properties.ADRESSE;

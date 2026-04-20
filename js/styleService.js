@@ -21,7 +21,7 @@
  */
 const getColorByROI = (props) => {
     const invest = props.INVEST_TOT || 0;
-    const gains  = props.GAINS_AN  || 0;
+    const gains = props.GAINS_AN || 0;
 
     if (invest <= 0 || gains <= 0) return '#ef4444'; // ROI incalculable -> rouge
 
@@ -41,7 +41,7 @@ const getColorByProduction = (props) => {
     const prodMwh = props.PV_AN_TOT ? props.PV_AN_TOT / 1000 : 0;
     if (prodMwh > 50) return '#047857'; // Énorme : vert foncé
     if (prodMwh > 20) return '#10b981'; // Grand  : vert
-    if (prodMwh > 5)  return '#6ee7b7'; // Moyen  : vert clair
+    if (prodMwh > 5) return '#6ee7b7'; // Moyen  : vert clair
     return '#f1f5f9';                   // Faible : gris
 };
 
@@ -61,18 +61,18 @@ const getColorByProduction = (props) => {
  * @returns {Object} Un objet de style compatible avec l'API Leaflet.
  */
 export function getStyleForFeature(feature, theme, isHover = false) {
-    const props     = feature.properties;
-    const isPatrim  = props.PATRIM === 1;
+    const props = feature.properties;
+    const isPatrim = props.PATRIM === 1;
 
     const fillColor = isPatrim
         ? '#cbd5e1'
         : (theme === 'production' ? getColorByProduction(props) : getColorByROI(props));
 
     return {
-        color       : isHover ? '#0f172a' : (isPatrim ? '#94a3b8' : fillColor),
-        weight      : isHover ? 2 : 1,
+        color: isHover ? '#0f172a' : (isPatrim ? '#94a3b8' : fillColor),
+        weight: isHover ? 2 : 1,
         fillColor,
-        fillOpacity : isHover ? 0.9 : 0.7,
-        dashArray   : isPatrim ? '4,4' : '',
+        fillOpacity: isHover ? 0.9 : 0.7,
+        dashArray: isPatrim ? '4,4' : '',
     };
 }

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexique Solaire — Comprendre votre bilan | Cadastre Solaire Genève</title>
+
+    <meta name="description"
+        content="Comprenez simplement le TRI, les kWh, la puissance kWc et tous les termes du bilan solaire. Basé sur les données officielles de l'État de Genève et de l'OFEN.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cadastre-solaire-geneve.vercel.app/lexique.html">
+
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lexique.css">
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="site-header" role="banner">
+        <div class="container header-content">
+            <a href="/" class="logo" aria-label="Retour à la carte — Solaire Genève">
+                <span class="logo-icon" aria-hidden="true">☀️</span>
+                Solaire Genève
+            </a>
+            <nav aria-label="Navigation principale">
+                <a href="/" class="data-source-badge">← Retour à la carte</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+
+        <!-- HERO -->
+        <section class="lex-hero" aria-label="Introduction au lexique">
+            <div class="container">
+                <h1>Comprendre votre bilan solaire</h1>
+                <p>Chaque chiffre affiché sur la carte a une signification précise. Cette page vous explique
+                    simplement — mais rigoureusement — ce que ces données veulent dire, d'où elles viennent
+                    et comment les interpréter.</p>
+                <nav class="lex-nav" aria-label="Navigation dans le lexique">
+                    <a href="#comparaison"> Repères de consommation</a>
+                    <a href="#tri"> Le TRI (retour sur investissement)</a>
+                    <a href="#kwh-kwc"> kWh et kWc</a>
+                    <a href="#autocon"> Autoconsommation</a>
+                    <a href="#subvention"> Subventions</a>
+                    <a href="#patrim"> Zone patrimoniale</a>
+                    <a href="#lidar"> La technologie LiDAR</a>
+                    <a href="#sources"> Sources</a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- REPÈRES DE CONSOMMATION -->
+        <section class="lex-section" id="comparaison" aria-labelledby="h-comparaison">
+            <div class="container">
+                <h2 id="h-comparaison">📊 Repères de consommation</h2>
+                <p>Quand la carte indique <em>"alimente ~4 foyers"</em>, de quoi parle-t-on exactement ?
+                    Un <strong>foyer de référence</strong> correspond à un ménage-type suisse selon l'étude
+                    officielle de l'Office fédéral de l'énergie (OFEN, 2021).</p>
+
+                <div class="lex-callout">
+                    <strong>Important :</strong> ces chiffres <em>excluent</em> le chauffage électrique,
+                    le chauffe-eau électrique et les pompes à chaleur. Ce sont les appareils du quotidien
+                    (cuisine, lessive, éclairage, électronique, etc.).
+                </div>
+
+                <div class="lex-table-wrapper" role="region" aria-label="Tableau de consommation des ménages suisses">
+                    <table class="lex-table">
+                        <caption>Consommation électrique d'un ménage-type suisse (OFEN 2021)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Type de logement</th>
+                                <th scope="col">Personnes</th>
+                                <th scope="col">Consommation annuelle</th>
+                                <th scope="col">Ce que cela représente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Appartement</td>
+                                <td>2 personnes</td>
+                                <td><strong>2'190 kWh/an</strong></td>
+                                <td>Couple sans enfant</td>
+                            </tr>
+                            <tr class="lex-table__highlight">
+                                <td>Appartement</td>
+                                <td>3 personnes</td>
+                                <td><strong>≈ 2'650 kWh/an</strong></td>
+                                <td>📍 <em>Référence utilisée sur la carte</em><br>2 adultes + 1 enfant</td>
+                            </tr>
+                            <tr>
+                                <td>Maison individuelle</td>
+                                <td>4 personnes</td>
+                                <td><strong>4'048 kWh/an</strong></td>
+                                <td>Famille avec 2 enfants</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Répartition de la consommation d'un appartement (2 personnes)</h3>
+                <div class="lex-bars" role="list" aria-label="Répartition de la consommation par poste">
+                    <div class="lex-bar-item" role="listitem">
+                        <div class="lex-bar-label">Cuisiner, réfrigérer</div>
+                        <div class="lex-bar-track" aria-label="32%">
+                            <div class="lex-bar-fill" style="width:32%"><span>32%</span></div>
+                        </div>
+                    </div>
+                    <div class="lex-bar-item" role="listitem">
+                        <div class="lex-bar-label">Électronique (TV, ordi…)</div>
+                        <div class="lex-bar-track" aria-label="19%">
+                            <div class="lex-bar-fill" style="width:19%"><span>19%</span></div>
+                        </div>
+                    </div>
+                    <div class="lex-bar-item" role="listitem">
+                        <div class="lex-bar-label">Lessive et séchage</div>
+                        <div class="lex-bar-track" aria-label="16%">
+                            <div class="lex-bar-fill" style="width:16%"><span>16%</span></div>
+                        </div>
+                    </div>
+                    <div class="lex-bar-item" role="listitem">
+                        <div class="lex-bar-label">Éclairage</div>
+                        <div class="lex-bar-track" aria-label="10%">
+                            <div class="lex-bar-fill" style="width:10%"><span>10%</span></div>
+                        </div>
+                    </div>
+                    <div class="lex-bar-item" role="listitem">
+                        <div class="lex-bar-label">Petits appareils + aspirateur</div>
+                        <div class="lex-bar-track" aria-label="10%">
+                            <div class="lex-bar-fill" style="width:10%"><span>10%</span></div>
+                        </div>
+                    </div>
+                    <div class="lex-bar-item" role="listitem">
+                        <div class="lex-bar-label">Électricité des communs</div>
+                        <div class="lex-bar-track" aria-label="13%">
+                            <div class="lex-bar-fill lex-bar-fill--muted" style="width:13%"><span>13%</span></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="lex-source">Source : SuisseÉnergie / OFEN — Fiche "Ménage-type", août 2021.</p>
+            </div>
+        </section>
+
+        <!-- TRI -->
+        <section class="lex-section lex-section--alt" id="tri" aria-labelledby="h-tri">
+            <div class="container">
+                <h2 id="h-tri">📅 Le TRI — Temps de Retour sur Investissement</h2>
+                <p>Le TRI est <strong>la durée (en années) nécessaire pour que l'installation solaire ait
+                        "remboursé" son coût initial</strong> grâce aux économies réalisées sur la facture
+                    d'électricité et aux revenus de la revente du surplus.</p>
+
+                <div class="lex-example">
+                    <h3>Exemple concret</h3>
+                    <p>Vous installez des panneaux pour <strong>25'000 CHF</strong>.<br>
+                        Chaque année, vous économisez 1'000 CHF sur votre facture et revendez pour
+                        500 CHF d'électricité → <strong>1'500 CHF de gains nets par an</strong>.</p>
+                    <p class="lex-formula">TRI = 25'000 CHF ÷ 1'500 CHF/an = <strong>~17 ans</strong></p>
+                    <p>Après 17 ans, l'installation vous rapporte de l'argent pendant encore
+                        <strong>8 à 13 ans</strong> (durée de vie typique : 25-30 ans).
+                    </p>
+                </div>
+
+                <h3>Pourquoi le TRI du cadastre peut différer de votre situation réelle</h3>
+                <ul class="lex-list">
+                    <li>Le TRI affiché est calculé par le projet <strong>G2 Solaire</strong> dans le cas
+                        d'une <em>rentabilité optimale</em> (autoconsommation maximisée).</li>
+                    <li>Il intègre les tarifs d'achat et de rachat en vigueur dans votre zone
+                        (Genève, Vaud, France voisine ont des tarifs différents).</li>
+                    <li>Il ne tient <em>pas</em> compte des subventions fédérales (Rétribution Unique),
+                        qui peuvent réduire le TRI réel de <strong>3 à 5 ans</strong>.</li>
+                    <li>Les données sont basées sur le LiDAR 2017-2019. Un bâtiment rénové depuis
+                        peut avoir un meilleur (ou moins bon) potentiel.</li>
+                </ul>
+
+                <div class="lex-callout lex-callout--tip">
+                    💡 <strong>En pratique :</strong> un TRI inférieur à 15 ans est généralement considéré
+                    comme excellent pour une installation photovoltaïque en Suisse.
+                </div>
+            </div>
+        </section>
+
+        <!-- KWH / KWC -->
+        <section class="lex-section" id="kwh-kwc" aria-labelledby="h-kwh">
+            <div class="container">
+                <h2 id="h-kwh">⚡ kWh et kWc : production vs puissance</h2>
+                <p>Ces deux unités sont souvent confondues. Voici la différence fondamentale :</p>
+
+                <div class="lex-compare">
+                    <div class="lex-compare__card">
+                        <div class="lex-compare__icon" aria-hidden="true">⚡</div>
+                        <h3>kWh — kilowattheure</h3>
+                        <p><strong>Une quantité d'énergie produite.</strong></p>
+                        <p>C'est ce qui est facturé sur votre note d'électricité.
+                            Exemple : votre machine à laver consomme environ 1 kWh par cycle.</p>
+                        <p class="lex-compare__analogy">Analogie : c'est comme des <em>litres d'eau</em>
+                            — une quantité consommée ou produite.</p>
+                    </div>
+                    <div class="lex-compare__card">
+                        <div class="lex-compare__icon" aria-hidden="true">🔋</div>
+                        <h3>kWc — kilowatt-crête</h3>
+                        <p><strong>Une puissance maximale installée.</strong></p>
+                        <p>C'est la capacité de production de votre installation dans des conditions
+                            idéales (ensoleillement maximal). 1 panneau standard ≈ 0.4 kWc.</p>
+                        <p class="lex-compare__analogy">Analogie : c'est comme la <em>puissance d'un robinet</em>
+                            — le débit maximal possible, indépendamment du volume produit.</p>
+                    </div>
+                </div>
+
+                <div class="lex-callout">
+                    Une installation de <strong>10 kWc</strong> en Suisse romande produit typiquement
+                    environ <strong>10'000 kWh/an</strong> (facteur de 1'000 heures équivalentes plein soleil
+                    par an environ, selon l'orientation et l'inclinaison).
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTOCONSOMMATION -->
+        <section class="lex-section lex-section--alt" id="autocon" aria-labelledby="h-autocon">
+            <div class="container">
+                <h2 id="h-autocon">🔄 Autoconsommation</h2>
+                <p>L'autoconsommation désigne la part de l'électricité produite par vos panneaux que vous
+                    consommez <strong>directement chez vous</strong>, sans passer par le réseau.</p>
+
+                <div class="lex-example">
+                    <h3>Pourquoi c'est important ?</h3>
+                    <p>En Suisse, le tarif de <strong>rachat</strong> de l'électricité (ce que SIG vous paie
+                        pour votre surplus) est <em>inférieur</em> au tarif d'<strong>achat</strong> (ce que vous
+                        payez normalement). Donc :</p>
+                    <ul class="lex-list">
+                        <li>1 kWh autoconsommé = vous économisez ~25 ct. (tarif plein)</li>
+                        <li>1 kWh revendu = vous recevez ~8-12 ct. (tarif de rachat)</li>
+                    </ul>
+                    <p><strong>Maximiser l'autoconsommation est donc la clé d'une bonne rentabilité.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBVENTIONS -->
+        <section class="lex-section" id="subvention" aria-labelledby="h-sub">
+            <div class="container">
+                <h2 id="h-sub">💰 Les subventions disponibles</h2>
+
+                <div class="lex-actors">
+                    <div class="lex-actor">
+                        <h3>Confédération — Rétribution Unique (RU)</h3>
+                        <p>Gérée par <a href="https://pronovo.ch/fr/" target="_blank"
+                                rel="noopener noreferrer">Pronovo</a>,
+                            la RU couvre typiquement <strong>entre 20 et 30%</strong> du coût d'investissement
+                            pour les installations jusqu'à 100 kWc. Déposez votre demande <em>avant</em>
+                            de commander les panneaux.</p>
+                    </div>
+                    <div class="lex-actor">
+                        <h3>Canton de Genève — GEnergie</h3>
+                        <p>Le canton peut proposer des subventions complémentaires via le programme
+                            <a href="https://www.ge.ch/dossier/transition-energetique" target="_blank"
+                                rel="noopener noreferrer">GEnergie</a>.
+                            Ces montants varient selon les années et les budgets alloués.
+                        </p>
+                    </div>
+                    <div class="lex-actor">
+                        <h3>Subvention affichée sur la carte (SUB_AC)</h3>
+                        <p>La "subvention estimée" dans le détail de chaque bâtiment est calculée par
+                            G2 Solaire et correspond à la <strong>subvention d'autoconsommation</strong> estimée
+                            selon les tarifs en vigueur lors du calcul (2019-2022). Elle est indicative.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PATRIMOINE -->
+        <section class="lex-section lex-section--alt" id="patrim" aria-labelledby="h-patrim">
+            <div class="container">
+                <h2 id="h-patrim">🏛️ Zone patrimoniale</h2>
+                <p>Certains bâtiments sont situés dans des zones de <strong>protection du patrimoine
+                        architectural</strong>. Cela ne signifie pas qu'une installation solaire est impossible,
+                    mais qu'elle est <strong>soumise à des conditions supplémentaires</strong>.</p>
+                <ul class="lex-list">
+                    <li>Les panneaux standards peuvent être refusés si trop visibles depuis l'espace public.</li>
+                    <li>Des alternatives existent : <strong>tuiles solaires</strong> (intégrées à la toiture),
+                        qui sont esthétiquement transparentes mais plus coûteuses.</li>
+                    <li>Contactez la <strong>Direction du patrimoine et des sites (DPS)</strong> du canton
+                        avant toute démarche.</li>
+                </ul>
+                <div class="lex-callout lex-callout--tip">
+                    💡 Sur la carte, les bâtiments à contrainte patrimoniale sont affichés avec un
+                    <strong>motif hachuré</strong> — ils ont un potentiel solaire réel, mais nécessitent
+                    une démarche plus approfondie.
+                </div>
+            </div>
+        </section>
+
+        <!-- LIDAR -->
+        <section class="lex-section" id="lidar" aria-labelledby="h-lidar">
+            <div class="container">
+                <h2 id="h-lidar">🛩️ La technologie LiDAR — comment les données ont été calculées</h2>
+                <p>Le <strong>LiDAR</strong> (Light Detection And Ranging) est une technologie qui utilise
+                    des impulsions laser émises depuis un avion pour cartographier la surface terrestre avec
+                    une précision centimétrique.</p>
+                <p>En Genève, ces relevés aériens ont permis de modéliser avec précision :</p>
+                <ul class="lex-list">
+                    <li>L'<strong>inclinaison</strong> de chaque pan de toit.</li>
+                    <li>L'<strong>orientation</strong> (sud, est, ouest…).</li>
+                    <li>Les <strong>ombrages</strong> portés par les bâtiments et végétaux voisins,
+                        heure par heure tout au long de l'année.</li>
+                </ul>
+                <p>Ces données ont ensuite été croisées avec les modèles d'ensoleillement pour calculer
+                    le potentiel solaire de chaque mètre carré de toiture.</p>
+                <div class="lex-callout">
+                    Les données affichées sont basées sur les relevés LiDAR de <strong>2017</strong>
+                    (Genève), <strong>2014</strong> (France) et <strong>2015</strong> (Vaud), avec une
+                    mise à jour partielle en 2022 pour le District de Nyon (LiDAR 2019).
+                    Les bâtiments construits après ces dates ne sont pas inclus.
+                </div>
+            </div>
+        </section>
+
+        <!-- SOURCES -->
+        <section class="lex-section lex-section--alt" id="sources" aria-labelledby="h-sources">
+            <div class="container">
+                <h2 id="h-sources">📚 Sources et références</h2>
+                <ul class="lex-sources">
+                    <li>
+                        <strong>Données cadastre solaire :</strong>
+                        <a href="https://ge.ch/sitg/" target="_blank" rel="noopener noreferrer">SITG</a> —
+                        Système d'Information du Territoire Genevois. Couche OCEN_SOLAIRE_PV_BATIMENT.
+                        Données OpenData.
+                    </li>
+                    <li>
+                        <strong>Calculs de potentiel et de rentabilité :</strong>
+                        Projet <a href="https://apps.sitg-lab.ch/solaire/" target="_blank" rel="noopener noreferrer">G2
+                            Solaire</a>
+                        — Programme INTERREG V France-Suisse. Méthodologie : modèle économique
+                        d'autoconsommation, tarifs locaux 2019-2022.
+                    </li>
+                    <li>
+                        <strong>Consommation des ménages :</strong>
+                        <a href="https://www.suisseenergie.ch" target="_blank"
+                            rel="noopener noreferrer">SuisseÉnergie</a> /
+                        Office fédéral de l'énergie (OFEN) — Fiche technique "Ménage-type",
+                        édition août 2021.
+                    </li>
+                    <li>
+                        <strong>Subventions fédérales :</strong>
+                        <a href="https://pronovo.ch/fr/" target="_blank" rel="noopener noreferrer">Pronovo SA</a>
+                        — Rétribution Unique (RU), programme de la Confédération suisse.
+                    </li>
+                    <li>
+                        <strong>Programme cantonal :</strong>
+                        <a href="https://www.ge.ch/dossier/transition-energetique" target="_blank"
+                            rel="noopener noreferrer">GEnergie</a>
+                        — Office cantonal de l'énergie (OCEN), Canton de Genève.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p>Créé à partir des données OpenData du
+                <a href="https://ge.ch/sitg/" target="_blank" rel="noopener noreferrer" class="footer-link"
+                    aria-label="SITG — Système d'Information du Territoire Genevois (ouvre dans un nouvel onglet)">SITG</a>
+                et de l'Office cantonal de l'énergie.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

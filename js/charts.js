@@ -28,7 +28,7 @@ export function initCharts(data) {
                 }]
             },
             options: {
-                responsive: true, 
+                responsive: true,
                 maintainAspectRatio: false,
                 plugins: { legend: { display: false } },
                 scales: {
@@ -55,15 +55,15 @@ export function initCharts(data) {
                 }]
             },
             options: {
-                responsive: true, 
+                responsive: true,
                 maintainAspectRatio: false,
                 cutout: '70%',
                 plugins: {
                     legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true, pointStyle: 'circle' } },
-                    tooltip: { 
-                        callbacks: { 
-                            label: (c) => ` ${new Intl.NumberFormat('fr-CH').format(c.raw)} MWh` 
-                        } 
+                    tooltip: {
+                        callbacks: {
+                            label: (c) => ` ${new Intl.NumberFormat('fr-CH').format(c.raw)} MWh`
+                        }
                     }
                 },
                 animation: { duration: 1500, easing: 'easeOutQuart' }
@@ -88,16 +88,16 @@ export function initCharts(data) {
                 }]
             },
             options: {
-                responsive: true, 
+                responsive: true,
                 maintainAspectRatio: false,
                 indexAxis: 'y', // Barres horizontales
                 plugins: { legend: { display: false } },
                 scales: {
-                    x: { 
-                        beginAtZero: true, 
-                        grid: { color: 'rgba(226, 232, 240, 0.4)', drawBorder: false }, 
+                    x: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(226, 232, 240, 0.4)', drawBorder: false },
                         border: { display: false },
-                        title: { display: true, text: 'Énergie libre et amortie en < 15 ans (MWh/an)', color: '#94a3b8' } 
+                        title: { display: true, text: 'Énergie libre et amortie en < 15 ans (MWh/an)', color: '#94a3b8' }
                     },
                     y: { grid: { display: false }, border: { display: false } }
                 },

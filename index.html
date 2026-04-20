@@ -50,6 +50,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lexique.css">
 </head>
 
 <body>
@@ -63,10 +64,8 @@
                 <span class="logo-icon" aria-hidden="true">☀️</span>
                 Solaire Genève
             </div>
-            <a href="https://opendata.swiss/fr/dataset/potentiel-photovoltaique-pv-par-batiment1"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="data-source-badge"
+            <a href="https://opendata.swiss/fr/dataset/potentiel-photovoltaique-pv-par-batiment1" target="_blank"
+                rel="noopener noreferrer" class="data-source-badge"
                 aria-label="Source des données : SITG / OCEN (ouvre dans un nouvel onglet)">
                 Données: SITG / OCEN
             </a>
@@ -97,18 +96,23 @@
                 <strong>Pourquoi un seuil de 800 kWh/m²/an ?</strong>
                 Pour garantir une installation intéressante, le modèle officiel a volontairement exclu les zones
                 trop à l'ombre (arbres, immeubles voisins) ou mal orientées.
-                Seuls les toits recevant au minimum 800 kWh d'énergie solaire par mètre carré et par an ont été retenus.
+                Seuls les toits recevant au minimum 800&nbsp;kWh<a href="/lexique.html#kwh-kwc" class="lexical-ref"
+                    aria-label="Glossaire : qu'est-ce qu'un kWh ?">?</a>
+                d'énergie solaire par mètre carré et par an ont été retenus.
                 Cela garantit que l'investissement initial sera couvert par l'énergie produite, permettant d'atteindre
                 une véritable rentabilité économique.
             </div>
 
             <h2>Le modèle économique : L'installation, le coût et l'entretien</h2>
             <p>
-                La rentabilité ne se limite pas à produire du courant : elle compare ce que coûte l'installation de
+                La rentabilité ne se limite pas à produire du courant : elle compare ce que coûte l'installation de
                 départ à ce qu'elle rapporte sur sa durée de vie.
                 Les données fournies ici (frais d'investissement, charges, recettes) ont été rigoureusement calculées
-                par le projet <a href="https://apps.sitg-lab.ch/solaire/" target="_blank">transfrontalier G2
-                    Solaire</a>.
+                par le projet <a href="https://apps.sitg-lab.ch/solaire/" target="_blank"
+                    rel="noopener noreferrer">transfrontalier G2 Solaire</a>.
+                Le retour sur investissement<a href="/lexique.html#tri" class="lexical-ref"
+                    aria-label="Glossaire : TRI, qu'est-ce que c'est ?">?</a>
+                affiché sur la carte correspond au <strong>TRI officiel</strong> calculé par cette méthode.
             </p>
             <p>
                 Ce modèle inclut non seulement l'achat et la pose des panneaux photovoltaïques, mais également leur
@@ -121,7 +125,8 @@
             <h2>La protection du patrimoine : Un gardiennage nécessaire</h2>
             <p>
                 Certaines toitures affichent un potentiel solaire exceptionnel, mais se trouvent en zone de protection
-                patrimoniale.
+                patrimoniale<a href="/lexique.html#patrim" class="lexical-ref"
+                    aria-label="Glossaire : qu'est-ce qu'une zone patrimoniale ?">?</a>.
                 L'État de Genève, dans son rôle de gardien, veille à préserver la cohérence historique et la beauté
                 architecturale du canton.
                 Ces zones ne sont donc pas immédiatement accessibles pour la pose standard de panneaux solaires, ou
@@ -141,21 +146,25 @@
                 <div class="kpi-grid" role="list" aria-label="Indicateurs clés du cadastre solaire">
                     <div class="kpi-card" role="listitem">
                         <div class="kpi-label" id="kpi-gwh-label">Production Potentielle (Toits viables)</div>
-                        <div class="kpi-value solar" id="kpi-gwh" aria-labelledby="kpi-gwh-label" aria-live="polite">--</div>
+                        <div class="kpi-value solar" id="kpi-gwh" aria-labelledby="kpi-gwh-label" aria-live="polite">--
+                        </div>
                         <div class="kpi-unit">Gigawattheures (GWh) par an</div>
                         <div class="kpi-desc">L'énergie annuelle que nous pourrions récolter.</div>
                     </div>
                     <div class="kpi-card" role="listitem">
                         <div class="kpi-label" id="kpi-co2-label">Impact Climatique</div>
-                        <div class="kpi-value eco" id="kpi-co2" aria-labelledby="kpi-co2-label" aria-live="polite">--</div>
+                        <div class="kpi-value eco" id="kpi-co2" aria-labelledby="kpi-co2-label" aria-live="polite">--
+                        </div>
                         <div class="kpi-unit">Milliers de tonnes de CO₂ évitées</div>
                         <div class="kpi-desc">La réduction d'émissions de gaz à effet de serre.</div>
                     </div>
                     <div class="kpi-card" role="listitem">
                         <div class="kpi-label" id="kpi-roi-label">Temps de Retour Moyen</div>
-                        <div class="kpi-value neutral" id="kpi-roi" aria-labelledby="kpi-roi-label" aria-live="polite">--</div>
+                        <div class="kpi-value neutral" id="kpi-roi" aria-labelledby="kpi-roi-label" aria-live="polite">
+                            --</div>
                         <div class="kpi-unit">Années d'autofinancement</div>
-                        <div class="kpi-desc">Une fois cette période passée, l'énergie produite est un bénéfice net.</div>
+                        <div class="kpi-desc">Une fois cette période passée, l'énergie produite est un bénéfice net.
+                        </div>
                     </div>
                 </div>
 
@@ -165,17 +174,16 @@
                         <p class="chart-desc">Répartition du nombre de toitures selon la durée d'amortissement de
                             l'installation photovoltaïque.</p>
                         <div class="chart-container">
-                            <canvas id="chartROI"
-                                role="img"
+                            <canvas id="chartROI" role="img"
                                 aria-label="Graphique en barres : répartition des toitures selon leur durée d'amortissement (ROI). Données chargées dynamiquement."></canvas>
                         </div>
                     </div>
                     <div class="chart-card">
                         <h3 class="chart-title">Potentiel Solaire et Patrimoine</h3>
-                        <p class="chart-desc">Énergie accessible immédiatement face aux toitures soumises à protection architecturale.</p>
+                        <p class="chart-desc">Énergie accessible immédiatement face aux toitures soumises à protection
+                            architecturale.</p>
                         <div class="chart-container">
-                            <canvas id="chartPatrimoine"
-                                role="img"
+                            <canvas id="chartPatrimoine" role="img"
                                 aria-label="Graphique en anneau : proportion du potentiel solaire libre versus soumis au patrimoine. Données chargées dynamiquement."></canvas>
                         </div>
                     </div>
@@ -185,8 +193,7 @@
                                 France voisine)</strong> disposant du plus grand potentiel solaire "libre" (sans
                             contrainte patrimoniale) et très rentable (amorti en moins de 15 ans).</p>
                         <div class="chart-container">
-                            <canvas id="chartCommunes"
-                                role="img"
+                            <canvas id="chartCommunes" role="img"
                                 aria-label="Graphique en barres horizontales : classement des communes du Grand Genève par potentiel solaire libre et rentable. Données chargées dynamiquement."></canvas>
                         </div>
                     </div>
@@ -200,21 +207,12 @@
                 <h2 class="section-title" id="section-carte">Découvrez le potentiel de votre bâtiment</h2>
 
                 <div class="search-box" role="search" aria-label="Recherche d'un bâtiment par adresse">
-                    <input
-                        type="text"
-                        id="addressSearch"
-                        class="search-input"
+                    <input type="text" id="addressSearch" class="search-input"
                         placeholder="Tapez une adresse genevoise (ex: rue de l'encyclopédie 20)..."
-                        aria-label="Rechercher un bâtiment par adresse"
-                        aria-expanded="false"
-                        aria-controls="searchResults"
-                        aria-autocomplete="list"
-                        autocomplete="off">
+                        aria-label="Rechercher un bâtiment par adresse" aria-expanded="false"
+                        aria-controls="searchResults" aria-autocomplete="list" autocomplete="off">
                     <!-- aria-live=polite : annonce les résultats dès qu'ils arrivent, sans interrompre -->
-                    <div
-                        id="searchResults"
-                        role="listbox"
-                        aria-label="Résultats de recherche d'adresse"
+                    <div id="searchResults" role="listbox" aria-label="Résultats de recherche d'adresse"
                         aria-live="polite"
                         style="position: absolute; top: 100%; left: 0; right: 0; background: white; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; max-height: 300px; overflow-y: auto; display: none;">
                     </div>
@@ -244,8 +242,7 @@
                         </div>
                     </div>
 
-                    <div id="map"
-                        role="application"
+                    <div id="map" role="application"
                         aria-label="Carte interactive du potentiel solaire des bâtiments genevois. Naviguez avec les touches fléchées une fois la carte focalisée."
                         tabindex="0"></div>
                 </div>
@@ -265,13 +262,12 @@
 
                 <div class="kpi-grid" style="gap: 2rem;">
                     <!-- Acteur 1 : L'État / GEnergie -->
-                    <a href="https://www.ge.ch/dossier/transition-energetique"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <a href="https://www.ge.ch/dossier/transition-energetique" target="_blank" rel="noopener noreferrer"
                         class="kpi-card"
                         style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center;"
                         aria-label="GEnergie et État de Genève — Programme cantonal officiel pour l'énergie (ouvre dans un nouvel onglet)">
-                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">GEnergie &amp; État de Genève</h3>
+                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">GEnergie
+                            &amp; État de Genève</h3>
                         <p class="kpi-desc" style="margin-top: 0; color: var(--color-text-muted);">Le programme cantonal
                             officiel pour l'énergie. Retrouvez les directives, les subventions cantonales additionnelles
                             et les démarches d'autorisation.</p>
@@ -279,35 +275,30 @@
 
                     <!-- Acteur 2 : SIG -->
                     <a href="https://ww2.sig-ge.ch/particuliers/offres/solaire/offres-solaires/producteur-solaire"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="kpi-card"
+                        target="_blank" rel="noopener noreferrer" class="kpi-card"
                         style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center;"
                         aria-label="SIG Services Industriels — Raccordement au réseau et tarifs de rachat (ouvre dans un nouvel onglet)">
-                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">SIG (Services Industriels)</h3>
+                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">SIG
+                            (Services Industriels)</h3>
                         <p class="kpi-desc" style="margin-top: 0; color: var(--color-text-muted);">Partenaire
                             incontournable pour le raccordement de vos panneaux au réseau genevois et la fixation des
                             tarifs de rachat de votre électricité.</p>
                     </a>
 
                     <!-- Acteur 3 : Pronovo -->
-                    <a href="https://pronovo.ch/fr/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="kpi-card"
+                    <a href="https://pronovo.ch/fr/" target="_blank" rel="noopener noreferrer" class="kpi-card"
                         style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center;"
                         aria-label="Pronovo — Subvention fédérale Rétribution Unique jusqu'à 30% (ouvre dans un nouvel onglet)">
-                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">Pronovo (Confédération)</h3>
+                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">Pronovo
+                            (Confédération)</h3>
                         <p class="kpi-desc" style="margin-top: 0; color: var(--color-text-muted);">L'organe de la
                             Confédération qui gère la "Rétribution Unique" (RU), la subvention fédérale principale qui
                             couvre jusqu'à 30% de l'investissement initial.</p>
                     </a>
 
                     <!-- Acteur 4 : Associations (SSES) -->
-                    <a href="https://www.sses.ch/fr/regional-und-fachgruppen/rso/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="kpi-card"
+                    <a href="https://www.sses.ch/fr/regional-und-fachgruppen/rso/" target="_blank"
+                        rel="noopener noreferrer" class="kpi-card"
                         style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center;"
                         aria-label="SSES — Société Suisse pour l'Énergie Solaire, conseils indépendants (ouvre dans un nouvel onglet)">
                         <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">SSES</h3>
@@ -317,13 +308,12 @@
                     </a>
 
                     <!-- Acteur 5 : SITG (Professionnels) -->
-                    <a href="https://apps.sitg-lab.ch/solaire/"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <a href="https://apps.sitg-lab.ch/solaire/" target="_blank" rel="noopener noreferrer"
                         class="kpi-card"
                         style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; grid-column: 1 / -1; max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(241, 245, 249, 0.9)); border: 1px solid rgba(148, 163, 184, 0.5);"
                         aria-label="Cadastre Solaire Officiel du SITG — Outil expert pour professionnels (ouvre dans un nouvel onglet)">
-                        <h3 style="color: #0f172a; margin-bottom: 0.5rem; font-size: 1.3rem;">Cadastre Solaire Officiel (Outil Expert)</h3>
+                        <h3 style="color: #0f172a; margin-bottom: 0.5rem; font-size: 1.3rem;">Cadastre Solaire Officiel
+                            (Outil Expert)</h3>
                         <p class="kpi-desc" style="margin-top: 0; color: var(--color-text-muted);">Vous êtes un
                             professionnel du domaine (installateur, architecte, urbaniste) ou vous cherchez des données
                             techniques brutes (modèles 3D, API) ? Consultez le cadastre solaire interactif expert du
@@ -338,10 +328,7 @@
     <footer class="site-footer" role="contentinfo">
         <div class="container">
             <p>Créé à partir des données OpenData du
-                <a href="https://ge.ch/sitg/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="footer-link"
+                <a href="https://ge.ch/sitg/" target="_blank" rel="noopener noreferrer" class="footer-link"
                     aria-label="SITG — Système d'Information du Territoire Genevois (ouvre dans un nouvel onglet)">SITG</a>
                 et de l'Office cantonal de l'énergie.
             </p>

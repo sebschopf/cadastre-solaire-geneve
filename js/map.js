@@ -18,11 +18,11 @@
  * @requires Leaflet (L) doit être disponible globalement via le <script> de index.html.
  */
 
-import { fetchBuildings }   from './apiService.js';
+import { fetchBuildings } from './apiService.js';
 import { getStyleForFeature } from './styleService.js';
-import { showPopup }        from './popupService.js';
-import { updateLegend }     from './legendService.js';
-import { initSearch }       from './searchService.js';
+import { showPopup } from './popupService.js';
+import { updateLegend } from './legendService.js';
+import { initSearch } from './searchService.js';
 
 // ---------------------------------------------------------------------------
 // Constantes
@@ -57,21 +57,21 @@ export function initMap() {
     const map = L.map('map').setView(MAP_CENTER, MAP_ZOOM_INITIAL);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution : '&copy; OpenStreetMap contributors &copy; CARTO',
-        subdomains  : 'abcd',
-        maxZoom     : 20,
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+        subdomains: 'abcd',
+        maxZoom: 20,
     }).addTo(map);
 
     // --- Éléments DOM ---
-    const themeSelect    = document.getElementById('themeSelect');
-    const legendElement  = document.getElementById('themeLegend');
-    const zoomWarning    = document.getElementById('zoomWarning');
-    const searchInput    = document.getElementById('addressSearch');
+    const themeSelect = document.getElementById('themeSelect');
+    const legendElement = document.getElementById('themeLegend');
+    const zoomWarning = document.getElementById('zoomWarning');
+    const searchInput = document.getElementById('addressSearch');
     const resultsContainer = document.getElementById('searchResults');
 
     // --- État interne ---
-    let currentTheme       = 'roi'; // Thème actif : 'roi' | 'production'
-    const cachedFeatures   = new Map(); // Cache local : OBJECTID -> Feature GeoJSON
+    let currentTheme = 'roi'; // Thème actif : 'roi' | 'production'
+    const cachedFeatures = new Map(); // Cache local : OBJECTID -> Feature GeoJSON
     const thematicLayerGroup = L.layerGroup().addTo(map); // Groupe de calques des bâtiments
 
     // --- Initialisation des services ---
