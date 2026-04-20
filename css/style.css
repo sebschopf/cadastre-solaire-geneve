@@ -564,15 +564,34 @@ a:hover {
 
 /* Footer */
 .site-footer {
-    background-color: #0f172a;
-    color: #94a3b8;
+    /* Fond sombre intentionnel : les textes clairs sur fond sombre restent AAA */
+    background-color: var(--color-text-main); /* oklch(0.20 ...) */
+    color: var(--color-heritage-main);         /* oklch(0.72 ...) sur fond sombre : ~4:1 AA */
     padding: 4rem 0;
     text-align: center;
     font-size: 0.95rem;
 }
 
-.site-footer a {
-    color: var(--color-eco-light);
+/* Lien principal du footer (SITG) — eco-light sur fond sombre : contraste suffisant */
+.footer-link {
+    color: var(--color-eco-light); /* oklch(0.88 0.12 161) sur fond oklch(0.20) : ~6:1 */
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.footer-link:hover {
+    color: var(--color-eco-main);
+}
+
+/* Citation de source officielle — texte secondaire, non porteur de sens critique */
+.footer-quote {
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-inline: auto;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    /* color-heritage-main sur fond sombre : décoratif / secondaire uniquement */
+    color: var(--color-heritage-main);
+    font-style: italic;
 }
 
 /* Animations */
