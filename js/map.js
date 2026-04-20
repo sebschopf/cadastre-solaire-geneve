@@ -21,27 +21,45 @@ export function initMap() {
     let debounceTimer;
 
     // --- MISE À JOUR DE LA LÉGENDE ---
-    function updateLegend() {
-        if (currentTheme === 'roi') {
-            themeLegend.innerHTML = `
-                <div class="legend-item"><span class="legend-color" style="background:#10b981;"></span> Excellent (< 10 ans)</div>
-                <div class="legend-item"><span class="legend-color" style="background:#fcd34d;"></span> Bon (10 à 20 ans)</div>
-                <div class="legend-item"><span class="legend-color" style="background:#f59e0b;"></span> Moyen (20 à 30 ans)</div>
-                <div class="legend-item"><span class="legend-color" style="background:#ef4444;"></span> Long (> 30 ans)</div>
-                <div class="legend-item"><span class="legend-color stripe"></span> Soumis au Patrimoine</div>
-            `;
-        } else {
-            themeLegend.innerHTML = `
-                <div class="legend-item"><span class="legend-color" style="background:#047857;"></span> Énorme (> 50 MWh/an)</div>
-                <div class="legend-item"><span class="legend-color" style="background:#10b981;"></span> Grand (20 à 50 MWh/an)</div>
-                <div class="legend-item"><span class="legend-color" style="background:#6ee7b7;"></span> Moyen (5 à 20 MWh/an)</div>
-                <div class="legend-item"><span class="legend-color" style="background:#f1f5f9;"></span> Faible (< 5 MWh/an)</div>
-                <div class="legend-item"><span class="legend-color stripe"></span> Soumis au Patrimoine</div>
+    // --- CONFIGURATION DES LÉGENDES ---
+    const LEGENDS = {
+        roi: {
+            items: [
+                { color: '#10b981', label: 'Excellent (< 10 ans)' },
+                { color: '#fcd34d', label: 'Bon (10 à 20 ans)' },
+                { color: '#f59e0b', label: 'Moyen (20 à 30 ans)' },
+                { color: '#ef4444', label: 'Long (> 30 ans)' }
+            ],
+            footer: ''
+        },
+        production: {
+            items: [
+                { color: '#047857', label: 'Énorme (> 50 MWh/an)' },
+                { color: '#10b981', label: 'Grand (20 à 50 MWh/an)' },
+                { color: '#6ee7b7', label: 'Moyen (5 à 20 MWh/an)' },
+                { color: '#f1f5f9', label: 'Faible (< 5 MWh/an)' }
+            ],
+            footer: `
                 <div style="margin-top: 0.75rem; font-size: 0.75rem; color: #64748b; line-height: 1.4; border-top: 1px dashed #e2e8f0; padding-top: 0.5rem;">
                     💡 <em><strong>Repère :</strong> 3 MWh (soit 3'000 kWh) équivalent à la consommation électrique annuelle d'un ménage genevois moyen (hors chauffage).</em>
                 </div>
-            `;
+            `
         }
+    };
+
+    function updateLegend() {
+        const config = LEGENDS[currentTheme];
+        
+        const itemsHtml = config.items.map(item => `
+            <div class="legend-item">
+                <span class="legend-color" style="background:${item.color};"></span> 
+                ${item.label}
+            </div>
+        `).join('');
+
+        const patrimoineHtml = `<div class="legend-item"><span class="legend-color stripe"></span> Soumis au Patrimoine</div>`;
+
+        themeLegend.innerHTML = itemsHtml + patrimoineHtml + config.footer;
     }
 
     // --- COULEURS THÉMATIQUES ---
