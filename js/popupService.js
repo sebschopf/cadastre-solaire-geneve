@@ -23,6 +23,8 @@ import {
     formatCHF,
 } from './metricsService.js';
 
+import { icon } from './iconService.js';
+
 // ---------------------------------------------------------------------------
 // Constructeurs de blocs HTML internes (fonctions pures, non exportées)
 // ---------------------------------------------------------------------------

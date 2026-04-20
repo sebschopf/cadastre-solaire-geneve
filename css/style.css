@@ -186,8 +186,32 @@ a:hover {
     letter-spacing: -0.03em;
 }
 
+/* --- Hôte d'icône Lucide --- */
+.icon-host {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Icône Lucide SVG ---
+ * L'icône hérite de `color` du parent via `currentColor`.
+ * Aucune couleur n'est déclarée ici — tout vient du contexte OKLCH. */
+.lucide-icon {
+    display: block;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* --- Logo header --- */
 .logo-icon {
-    color: var(--color-solar-main);
+    color: var(--color-solar-main); /* OKLCH — hérite via currentColor */
+    display: inline-flex;
+    align-items: center;
 }
 
 .data-source-badge {

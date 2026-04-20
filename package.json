@@ -5,7 +5,15 @@
   "scripts": {
     "dev": "npx serve ."
   },
-  "keywords": ["solaire", "geneve", "opendata", "sitg"],
+  "keywords": [
+    "solaire",
+    "geneve",
+    "opendata",
+    "sitg"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "lucide": "^1.8.0"
+  }
 }

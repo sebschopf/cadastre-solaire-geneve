@@ -1,10 +1,14 @@
 import { initCharts } from './charts.js';
 import { initMap } from './map.js';
+import { renderAll } from './iconService.js';
 
 // Fonction pour formater les nombres façon suisse
 const formatNum = (num) => new Intl.NumberFormat('fr-CH').format(Math.round(num));
 
 document.addEventListener('DOMContentLoaded', async () => {
+
+    // Hydratation des icônes Lucide (data-icon="nom") dans tout le document
+    renderAll();
 
     // Initialisation de la carte (ne dépend pas des données globales)
     try {
