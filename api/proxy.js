@@ -12,7 +12,18 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const response = await fetch(decodeURIComponent(url));
+    /**
+     * Compression : On demande explicitement au SITG de renvoyer les données
+     * compressées (gzip ou brotli). Node.js / Vercel décompresse automatiquement
+     * la réponse avant qu'elle ne soit lue par response.json().
+     * Cela peut réduire la bande passante de 60 à 80% sur les grandes requêtes BBOX.
+     */
+    const response = await fetch(decodeURIComponent(url), {
+      headers: {
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept'         : 'application/json',
+      },
+    });
     const data = await response.json();
 
     // On ajoute les headers CORS pour autoriser votre propre site
