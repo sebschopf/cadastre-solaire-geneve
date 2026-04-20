@@ -89,8 +89,8 @@
     --shadow-glow   : 0 0 20px oklch(0.72 0.16 var(--hue-solar) / 0.20);
 
     /* --- Typographie --- */
-    --font-ui   : 'Outfit', 'Inter', system-ui, sans-serif;
-    --font-body : 'Lora', Georgia, serif;
+    --font-ui   : 'Outfit', 'Inter', system-ui, sans-serif, 'Atkinson Hyperlegible', 'OpenDyslexic', dyslexic;
+    --font-body : 'Lora', Georgia, serif, 'Atkinson Hyperlegible', 'OpenDyslexic', dyslexic;
 
     /* --- Transitions --- */
     --transition-smooth : all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
