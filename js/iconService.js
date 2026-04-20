@@ -19,52 +19,53 @@
  * @see https://lucide.dev/icons/
  */
 
-import {
-    Sun, Search, ZoomIn, Calendar, BarChart2, Zap,
-    RefreshCw, Coins, Landmark, Plane, BookOpen,
-    Home, CheckCircle2, AlertTriangle, Lightbulb,
-    MapPin, ChevronDown, ArrowLeft, Info, FileText,
-    Leaf, TrendingDown, Euro, Ruler, CloudOff,
-} from '/node_modules/lucide/dist/esm/lucide.js';
+// ---------------------------------------------------------------------------
+// Accès au bundle Lucide (chargé via <script> dans le HTML)
+// ---------------------------------------------------------------------------
+
+const lucideIcons = window.lucide ? window.lucide.icons : {};
+
+if (!window.lucide) {
+    console.error("[iconService] Le bundle Lucide n'est pas chargé. Vérifiez l'inclusion de lucide.min.js.");
+}
 
 // ---------------------------------------------------------------------------
 // Registre d'icônes — une seule déclaration par icône utilisée dans l'app.
-// Pour ajouter une icône : 1) importer depuis lucide, 2) l'enregistrer ici.
 // ---------------------------------------------------------------------------
 
 const ICONS = {
     // Navigation & UI
-    'arrow-left'    : ArrowLeft,
-    'chevron-down'  : ChevronDown,
-    'info'          : Info,
-    'file-text'     : FileText,
-    'search'        : Search,
-    'zoom-in'       : ZoomIn,
+    'arrow-left'    : lucideIcons.ArrowLeft,
+    'chevron-down'  : lucideIcons.ChevronDown,
+    'info'          : lucideIcons.Info,
+    'file-text'     : lucideIcons.FileText,
+    'search'        : lucideIcons.Search,
+    'zoom-in'       : lucideIcons.ZoomIn,
 
     // Domaine solaire
-    'sun'           : Sun,
-    'zap'           : Zap,
-    'leaf'          : Leaf,
-    'bar-chart-2'   : BarChart2,
-    'trending-down' : TrendingDown,
+    'sun'           : lucideIcons.Sun,
+    'zap'           : lucideIcons.Zap,
+    'leaf'          : lucideIcons.Leaf,
+    'bar-chart-2'   : lucideIcons.BarChart2,
+    'trending-down' : lucideIcons.TrendingDown,
 
     // Bâtiment & popup
-    'home'          : Home,
-    'calendar'      : Calendar,
-    'ruler'         : Ruler,
-    'map-pin'       : MapPin,
-    'landmark'      : Landmark,
-    'check-circle-2': CheckCircle2,
-    'alert-triangle': AlertTriangle,
+    'home'          : lucideIcons.Home,
+    'calendar'      : lucideIcons.Calendar,
+    'ruler'         : lucideIcons.Ruler,
+    'map-pin'       : lucideIcons.MapPin,
+    'landmark'      : lucideIcons.Landmark,
+    'check-circle-2': lucideIcons.CheckCircle2,
+    'alert-triangle': lucideIcons.AlertTriangle,
 
     // Lexique
-    'lightbulb'     : Lightbulb,
-    'book-open'     : BookOpen,
-    'refresh-cw'    : RefreshCw,
-    'plane'         : Plane,
-    'coins'         : Coins,
-    'euro'          : Euro,
-    'cloud-off'     : CloudOff,
+    'refresh-cw'    : lucideIcons.RefreshCw,
+    'coins'         : lucideIcons.Coins,
+    'plane'         : lucideIcons.Plane,
+    'book-open'     : lucideIcons.BookOpen,
+    'lightbulb'     : lucideIcons.Lightbulb,
+    'euro'          : lucideIcons.Euro,
+    'cloud-off'     : lucideIcons.CloudOff,
 };
 
 // ---------------------------------------------------------------------------
@@ -111,18 +112,25 @@ export function icon(name, { size = 18, className = '', label = '' } = {}) {
         return '';
     }
 
-    // Lucide retourne [tag, attrs, children[]]. On sérialise en SVG.
-    // On surcharge les attrs SVG racine pour contrôle taille et accessibilité.
-    const [tag, baseAttrs, children] = iconDef;
+    // Dans la version ESM de Lucide, iconDef est directement un tableau de nœuds enfants :
+    // [ [tag, attrs], [tag, attrs], ... ]
+    const children = iconDef;
 
+    // Attributs standards Lucide pour le conteneur <svg>
     const svgAttrs = {
-        ...baseAttrs,
-        width               : size,
-        height              : size,
-        class               : `lucide-icon ${className}`.trim(),
-        'aria-hidden'       : label ? 'false' : 'true',
+        xmlns: "http://www.w3.org/2000/svg",
+        width: size,
+        height: size,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": 2,
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        class: `lucide-icon ${className}`.trim(),
+        'aria-hidden': label ? 'false' : 'true',
         ...(label ? { 'aria-label': label, role: 'img' } : {}),
-        focusable           : 'false', // Empêche le focus sur IE11
+        focusable: 'false',
     };
 
     return `<svg ${attrsToString(svgAttrs)}>${children.map(nodeToSVG).join('')}</svg>`;

@@ -159,10 +159,17 @@ export function initSearch({ searchInput, resultsContainer, map, cachedFeatures 
         ].join(',');
 
         const sitgUrl = `${SITG_BASE_URL}?where=${encodeURIComponent(whereClause)}&outFields=${FIELDS}&outSR=4326&f=geojson&resultRecordCount=${MAX_RESULTS}`;
-        const url = withProxy(sitgUrl);
+        const proxyUrl = withProxy(sitgUrl);
 
         try {
-            const response = await fetch(url, { signal });
+            // Tentative via le proxy (Vercel)
+            let response = await fetch(proxyUrl, { signal });
+
+            // Fallback direct si le proxy est absent (404)
+            if (response.status === 404) {
+                console.warn("[searchService] Proxy absent (404). Tentative d'appel direct...");
+                response = await fetch(sitgUrl, { signal });
+            }
             const data = await response.json();
 
             if (data.features && data.features.length > 0) {
@@ -186,11 +193,10 @@ export function initSearch({ searchInput, resultsContainer, map, cachedFeatures 
         resultsContainer.innerHTML = '';
         features.forEach((feature) => {
             const div = document.createElement('div');
-            div.style.cssText = 'padding: 0.75rem 1.5rem; cursor: pointer; border-bottom: 1px solid #f1f5f9;';
+            // Utilisation d'une classe CSS au lieu de styles inline (SRP & cohérence design)
+            div.className = 'search-result-item';
             div.innerText = feature.properties.ADRESSE || 'Adresse inconnue';
 
-            div.addEventListener('mouseover', () => (div.style.backgroundColor = '#f8fafc'));
-            div.addEventListener('mouseout', () => (div.style.backgroundColor = 'transparent'));
             div.addEventListener('click', () => {
                 _selectBuilding(feature);
                 resultsContainer.style.display = 'none';
@@ -216,7 +222,12 @@ export function initSearch({ searchInput, resultsContainer, map, cachedFeatures 
         }
 
         currentLayer = L.geoJSON(feature, {
-            style: { color: '#0f172a', weight: 4, fillColor: '#fcd34d', fillOpacity: 0.8 },
+            style: {
+                color: 'oklch(0.20 0.010 var(--hue-neutral))', // --color-text-main
+                weight: 4,
+                fillColor: 'oklch(0.72 0.16 var(--hue-solar))', // --color-solar-main
+                fillOpacity: 0.8
+            },
         }).addTo(map);
 
         const bounds = currentLayer.getBounds();

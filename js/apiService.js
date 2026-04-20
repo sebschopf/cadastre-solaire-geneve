@@ -52,10 +52,17 @@ export async function fetchBuildings(bounds) {
     ].join(',');
 
     const sitgUrl = `https://vector.sitg.ge.ch/arcgis/rest/services/OCEN_SOLAIRE_PV_BATIMENT/FeatureServer/0/query?geometry=${bbox}&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=${FIELDS}&outSR=4326&f=geojson`;
-    const url = `/api/proxy?url=${encodeURIComponent(sitgUrl)}`;
+    const proxyUrl = `/api/proxy?url=${encodeURIComponent(sitgUrl)}`;
 
     try {
-        const response = await fetch(url, { signal });
+        // Tentative via le proxy (Vercel)
+        let response = await fetch(proxyUrl, { signal });
+
+        // Si le proxy est absent (ex: dev local avec 'serve'), on tente l'appel direct
+        if (response.status === 404) {
+            console.warn("[apiService] Proxy absent (404). Tentative d'appel direct au SITG...");
+            response = await fetch(sitgUrl, { signal });
+        }
 
         if (!response.ok) {
             throw new Error(`Erreur réseau: ${response.status}`);
