@@ -169,7 +169,7 @@ export function initSearch({ searchInput, resultsContainer, map, cachedFeatures 
                 _renderResults(data.features);
             } else {
                 resultsContainer.innerHTML =
-                    '<div style="padding: 1rem; color: #64748b;">Aucun bâtiment trouvé.</div>';
+                    '<div class="search-no-results">Aucun bâtiment trouvé.</div>';
                 resultsContainer.style.display = 'block';
             }
         } catch (error) {
