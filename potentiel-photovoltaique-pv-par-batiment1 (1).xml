@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://ckan.opendata.swiss/perma/OCEN_SOLAIRE_PV_BATIMENT@canton-geneve">
+    <dct:identifier>OCEN_SOLAIRE_PV_BATIMENT@canton-geneve</dct:identifier>
+    <dct:description xml:lang="en">Produit secondaire. La couche du potentiel photovoltaïque par bâtiment (EGID) représente et regroupe les informations relatives au potentiel d'énergie PV. Il est basé sur le potentiel solaire dont l'irradiation est au minimum de 800 kWh/m2/an sur les toitures, tenant compte des ombrages, de la pente et de l'orientation (cf. données relatives à la répartition surfacique de ce potentiel dans la couche OCEN_SOLAIRE_BASE_BATIMENT). Le seuil de 800 kWh/m2/an est choisi de sorte une garantir une production et rentabilité économique minimale. Cela permet d'éliminer les zones d'ombrages majeures, tout en laissant à disposition une grande partie des toitures, y compris celles orientées nord mais faiblement inclinées. La couche fournit les informations de potentiels sur la quantité d'énergie annuelle, la puissance électrique de crête, la surfaces des capteurs, le potentiel d'autoconsommation de l'électricité, les émissions de GES évitées, les données économiques (frais d'investissement, charges, recettes). Ces données sont calculées dans le cas d'une rentabilité économique optimale (temps de retour sur investissement) liée à l'autoconsommation du courant produit, tenant compte des tarifs d'achat et de revente de l'électricité en vigueur dans les différentes parties du Grand Genève. L'élaboration de cette couche s'inscrit dans le cadre du programme INTERREG V France-Suisse et du projet G2 Solaire. Ce dernier a permis à la fois de mettre à jour le précédent cadastre solaire genevois de 2016 (sous mandat de l'OCEN - Office cantonal de l'énergie - et des SIG - Services industriels genevois), et de l'étendre sur le reste du Grand Genève incluant le canton de Genève, le District de Nyon et les communes francaises limitrophes des départements de l'Ain et de Haute Savoie. Le cadastre solaire a été calculé sur le Grand Genève en juin 2019 (sur la base des données LIDAR 2017 Genève, 2014 France, 2015 Vaud), puis mis à jour en janvier 2022 uniquement sur le District de Nyon avec les données LIDAR de 2019. Les données calculées ne tiennent pas compte de bâtiments construits après ces dates.</dct:description>
+    <dct:description xml:lang="it">Produit secondaire. La couche du potentiel photovoltaïque par bâtiment (EGID) représente et regroupe les informations relatives au potentiel d'énergie PV. Il est basé sur le potentiel solaire dont l'irradiation est au minimum de 800 kWh/m2/an sur les toitures, tenant compte des ombrages, de la pente et de l'orientation (cf. données relatives à la répartition surfacique de ce potentiel dans la couche OCEN_SOLAIRE_BASE_BATIMENT). Le seuil de 800 kWh/m2/an est choisi de sorte une garantir une production et rentabilité économique minimale. Cela permet d'éliminer les zones d'ombrages majeures, tout en laissant à disposition une grande partie des toitures, y compris celles orientées nord mais faiblement inclinées. La couche fournit les informations de potentiels sur la quantité d'énergie annuelle, la puissance électrique de crête, la surfaces des capteurs, le potentiel d'autoconsommation de l'électricité, les émissions de GES évitées, les données économiques (frais d'investissement, charges, recettes). Ces données sont calculées dans le cas d'une rentabilité économique optimale (temps de retour sur investissement) liée à l'autoconsommation du courant produit, tenant compte des tarifs d'achat et de revente de l'électricité en vigueur dans les différentes parties du Grand Genève. L'élaboration de cette couche s'inscrit dans le cadre du programme INTERREG V France-Suisse et du projet G2 Solaire. Ce dernier a permis à la fois de mettre à jour le précédent cadastre solaire genevois de 2016 (sous mandat de l'OCEN - Office cantonal de l'énergie - et des SIG - Services industriels genevois), et de l'étendre sur le reste du Grand Genève incluant le canton de Genève, le District de Nyon et les communes francaises limitrophes des départements de l'Ain et de Haute Savoie. Le cadastre solaire a été calculé sur le Grand Genève en juin 2019 (sur la base des données LIDAR 2017 Genève, 2014 France, 2015 Vaud), puis mis à jour en janvier 2022 uniquement sur le District de Nyon avec les données LIDAR de 2019. Les données calculées ne tiennent pas compte de bâtiments construits après ces dates.</dct:description>
+    <dct:description xml:lang="de">Produit secondaire. La couche du potentiel photovoltaïque par bâtiment (EGID) représente et regroupe les informations relatives au potentiel d'énergie PV. Il est basé sur le potentiel solaire dont l'irradiation est au minimum de 800 kWh/m2/an sur les toitures, tenant compte des ombrages, de la pente et de l'orientation (cf. données relatives à la répartition surfacique de ce potentiel dans la couche OCEN_SOLAIRE_BASE_BATIMENT). Le seuil de 800 kWh/m2/an est choisi de sorte une garantir une production et rentabilité économique minimale. Cela permet d'éliminer les zones d'ombrages majeures, tout en laissant à disposition une grande partie des toitures, y compris celles orientées nord mais faiblement inclinées. La couche fournit les informations de potentiels sur la quantité d'énergie annuelle, la puissance électrique de crête, la surfaces des capteurs, le potentiel d'autoconsommation de l'électricité, les émissions de GES évitées, les données économiques (frais d'investissement, charges, recettes). Ces données sont calculées dans le cas d'une rentabilité économique optimale (temps de retour sur investissement) liée à l'autoconsommation du courant produit, tenant compte des tarifs d'achat et de revente de l'électricité en vigueur dans les différentes parties du Grand Genève. L'élaboration de cette couche s'inscrit dans le cadre du programme INTERREG V France-Suisse et du projet G2 Solaire. Ce dernier a permis à la fois de mettre à jour le précédent cadastre solaire genevois de 2016 (sous mandat de l'OCEN - Office cantonal de l'énergie - et des SIG - Services industriels genevois), et de l'étendre sur le reste du Grand Genève incluant le canton de Genève, le District de Nyon et les communes francaises limitrophes des départements de l'Ain et de Haute Savoie. Le cadastre solaire a été calculé sur le Grand Genève en juin 2019 (sur la base des données LIDAR 2017 Genève, 2014 France, 2015 Vaud), puis mis à jour en janvier 2022 uniquement sur le District de Nyon avec les données LIDAR de 2019. Les données calculées ne tiennent pas compte de bâtiments construits après ces dates.</dct:description>
+    <dct:description xml:lang="fr">Produit secondaire. La couche du potentiel photovoltaïque par bâtiment (EGID) représente et regroupe les informations relatives au potentiel d'énergie PV. Il est basé sur le potentiel solaire dont l'irradiation est au minimum de 800 kWh/m2/an sur les toitures, tenant compte des ombrages, de la pente et de l'orientation (cf. données relatives à la répartition surfacique de ce potentiel dans la couche OCEN_SOLAIRE_BASE_BATIMENT). Le seuil de 800 kWh/m2/an est choisi de sorte une garantir une production et rentabilité économique minimale. Cela permet d'éliminer les zones d'ombrages majeures, tout en laissant à disposition une grande partie des toitures, y compris celles orientées nord mais faiblement inclinées. La couche fournit les informations de potentiels sur la quantité d'énergie annuelle, la puissance électrique de crête, la surfaces des capteurs, le potentiel d'autoconsommation de l'électricité, les émissions de GES évitées, les données économiques (frais d'investissement, charges, recettes). Ces données sont calculées dans le cas d'une rentabilité économique optimale (temps de retour sur investissement) liée à l'autoconsommation du courant produit, tenant compte des tarifs d'achat et de revente de l'électricité en vigueur dans les différentes parties du Grand Genève. L'élaboration de cette couche s'inscrit dans le cadre du programme INTERREG V France-Suisse et du projet G2 Solaire. Ce dernier a permis à la fois de mettre à jour le précédent cadastre solaire genevois de 2016 (sous mandat de l'OCEN - Office cantonal de l'énergie - et des SIG - Services industriels genevois), et de l'étendre sur le reste du Grand Genève incluant le canton de Genève, le District de Nyon et les communes francaises limitrophes des départements de l'Ain et de Haute Savoie. Le cadastre solaire a été calculé sur le Grand Genève en juin 2019 (sur la base des données LIDAR 2017 Genève, 2014 France, 2015 Vaud), puis mis à jour en janvier 2022 uniquement sur le District de Nyon avec les données LIDAR de 2019. Les données calculées ne tiennent pas compte de bâtiments construits après ces dates.</dct:description>
+    <dct:title xml:lang="en">Potentiel photovoltaïque (PV) par bâtiment</dct:title>
+    <dct:title xml:lang="it">Potentiel photovoltaïque (PV) par bâtiment</dct:title>
+    <dct:title xml:lang="de">Potentiel photovoltaïque (PV) par bâtiment</dct:title>
+    <dct:title xml:lang="fr">Potentiel photovoltaïque (PV) par bâtiment</dct:title>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-06-12T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:modified>
+    <dct:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/IRREG"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+    <dct:relation>
+      <rdf:Description rdf:about="https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/OCEN_SOLAIRE_PV_BATIMENT">
+        <rdfs:label xml:lang="fr">geocat.ch permalien</rdfs:label>
+        <rdfs:label xml:lang="de">geocat.ch Permalink</rdfs:label>
+        <rdfs:label xml:lang="en">geocat.ch permalink</rdfs:label>
+        <rdfs:label xml:lang="it">geocat.ch link permanente</rdfs:label>
+      </rdf:Description>
+    </dct:relation>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N13c672b31a074a6383abb1326aa3715d">
+        <vcard:hasEmail rdf:resource="mailto:geraldine.chollet@etat.ge.ch"/>
+        <vcard:fn>geraldine.chollet@etat.ge.ch</vcard:fn>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.swiss/organization/canton-geneve">
+        <foaf:name xml:lang="en">Office cantonal de l'énergie</foaf:name>
+        <foaf:name xml:lang="it">Office cantonal de l'énergie</foaf:name>
+        <foaf:name xml:lang="de">Office cantonal de l'énergie</foaf:name>
+        <foaf:name xml:lang="fr">Office cantonal de l'énergie</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/SOCI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/EDUC"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENER"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.opendata.swiss/dataset/e1d80b99-32b3-4f80-9185-e5560873f257/resource/c1854e68-8730-4a15-9d97-e7e33cf5243a">
+        <dct:rights rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:license rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:title xml:lang="en">0</dct:title>
+        <dct:title xml:lang="it">0</dct:title>
+        <dct:title xml:lang="de">0</dct:title>
+        <dct:title xml:lang="fr">0</dct:title>
+        <dct:description xml:lang="en">OCEN_SOLAIRE_PV_BATIMENT</dct:description>
+        <dct:description xml:lang="it">OCEN_SOLAIRE_PV_BATIMENT</dct:description>
+        <dct:description xml:lang="de">OCEN_SOLAIRE_PV_BATIMENT</dct:description>
+        <dct:description xml:lang="fr">OCEN_SOLAIRE_PV_BATIMENT</dct:description>
+        <dcat:accessURL rdf:resource="https://vector.sitg.ge.ch/arcgis/services/OCEN_SOLAIRE_PV_BATIMENT/MapServer/WFSServer?service=WFS&amp;request=GetCapabilities"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-06-12T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.opendata.swiss/dataset/e1d80b99-32b3-4f80-9185-e5560873f257/resource/a127733b-dfe8-4245-980b-d529f281a680">
+        <dct:rights rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:license rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/REST"/>
+        <dct:title xml:lang="en">0</dct:title>
+        <dct:title xml:lang="it">0</dct:title>
+        <dct:title xml:lang="de">0</dct:title>
+        <dct:title xml:lang="fr">0</dct:title>
+        <dct:description xml:lang="en">OCEN_SOLAIRE_PV_BATIMENT</dct:description>
+        <dct:description xml:lang="it">OCEN_SOLAIRE_PV_BATIMENT</dct:description>
+        <dct:description xml:lang="de">OCEN_SOLAIRE_PV_BATIMENT</dct:description>
+        <dct:description xml:lang="fr">OCEN_SOLAIRE_PV_BATIMENT</dct:description>
+        <dcat:accessURL rdf:resource="https://vector.sitg.ge.ch/arcgis/rest/services/OCEN_SOLAIRE_PV_BATIMENT/FeatureServer"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-06-12T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.opendata.swiss/dataset/e1d80b99-32b3-4f80-9185-e5560873f257/resource/cf3b5370-c7b5-47a7-b5f2-f30a6c6453cc">
+        <dct:rights rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:license rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:title xml:lang="en">CSV</dct:title>
+        <dct:title xml:lang="it">CSV</dct:title>
+        <dct:title xml:lang="de">CSV</dct:title>
+        <dct:title xml:lang="fr">CSV</dct:title>
+        <dct:description xml:lang="en">Serveur de fichiers Opendata</dct:description>
+        <dct:description xml:lang="it">Serveur de fichiers Opendata</dct:description>
+        <dct:description xml:lang="de">Serveur de fichiers Opendata</dct:description>
+        <dct:description xml:lang="fr">Serveur de fichiers Opendata</dct:description>
+        <dcat:accessURL rdf:resource="https://ge.ch/sitg/geodata/SITG/OPENDATA/OCEN_SOLAIRE_PV_BATIMENT-CSV.zip"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-06-12T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.opendata.swiss/dataset/e1d80b99-32b3-4f80-9185-e5560873f257/resource/d80c8d5e-4729-43c3-88b5-4a190d3523bb">
+        <dct:rights rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:license rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:title xml:lang="en">GDB</dct:title>
+        <dct:title xml:lang="it">GDB</dct:title>
+        <dct:title xml:lang="de">GDB</dct:title>
+        <dct:title xml:lang="fr">GDB</dct:title>
+        <dct:description xml:lang="en">Serveur de fichiers Opendata</dct:description>
+        <dct:description xml:lang="it">Serveur de fichiers Opendata</dct:description>
+        <dct:description xml:lang="de">Serveur de fichiers Opendata</dct:description>
+        <dct:description xml:lang="fr">Serveur de fichiers Opendata</dct:description>
+        <dcat:accessURL rdf:resource="https://ge.ch/sitg/geodata/SITG/OPENDATA/OCEN_SOLAIRE_PV_BATIMENT-GDB.zip"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-06-12T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.opendata.swiss/dataset/e1d80b99-32b3-4f80-9185-e5560873f257/resource/e835987f-bd87-4c9c-8bdf-870287e0d2bc">
+        <dct:rights rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:license rdf:resource="http://dcat-ap.ch/vocabulary/licenses/terms_by"/>
+        <dct:title xml:lang="en">SHP</dct:title>
+        <dct:title xml:lang="it">SHP</dct:title>
+        <dct:title xml:lang="de">SHP</dct:title>
+        <dct:title xml:lang="fr">SHP</dct:title>
+        <dct:description xml:lang="en">Serveur de fichiers Opendata</dct:description>
+        <dct:description xml:lang="it">Serveur de fichiers Opendata</dct:description>
+        <dct:description xml:lang="de">Serveur de fichiers Opendata</dct:description>
+        <dct:description xml:lang="fr">Serveur de fichiers Opendata</dct:description>
+        <dcat:accessURL rdf:resource="https://ge.ch/sitg/geodata/SITG/OPENDATA/OCEN_SOLAIRE_PV_BATIMENT-SHP.zip"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-06-12T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-01T00:00:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+  </dcat:Dataset>
+  <dct:RightsStatement rdf:about="http://dcat-ap.ch/vocabulary/licenses/terms_by">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+  </dct:RightsStatement>
+</rdf:RDF>

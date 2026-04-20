@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre Solaire Genève - Découvrez le potentiel de votre toiture</title>
+    
+    <!-- SEO de base -->
+    <meta name="description" content="Découvrez le potentiel photovoltaïque de votre bâtiment à Genève. Carte interactive, rentabilité, retour sur investissement et subventions (G2 Solaire, SITG).">
+    <meta name="keywords" content="solaire, photovoltaïque, genève, cadastre solaire, énergie, transition énergétique, sitg, panneaux solaires, rentabilité">
+    <meta name="author" content="Cadastre Solaire Genève">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://votre-domaine.com/">
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://votre-domaine.com/">
+    <meta property="og:title" content="Cadastre Solaire Genève - Potentiel Photovoltaïque">
+    <meta property="og:description" content="Découvrez le potentiel de votre toiture genevoise en un clic. Calculez votre rentabilité et passez à l'énergie solaire.">
+    <!-- Remplacez l'URL de l'image par une vraie capture d'écran du site (1200x630) -->
+    <meta property="og:image" content="https://votre-domaine.com/og-image.jpg">
+    <meta property="og:locale" content="fr_CH">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cadastre Solaire Genève">
+    <meta name="twitter:description" content="Calculez la rentabilité de vos panneaux solaires avec les données officielles du Canton de Genève.">
+    <meta name="twitter:image" content="https://votre-domaine.com/og-image.jpg">
+
+    <!-- Icônes & Apparence mobile -->
+    <meta name="theme-color" content="#f59e0b">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☀️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☀️</text></svg>">
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+            <div class="logo">
+                <span class="logo-icon">☀️</span>
+                Solaire Genève
+            </div>
+            <a href="https://opendata.swiss/fr/dataset/potentiel-photovoltaique-pv-par-batiment1" target="_blank"
+                class="data-source-badge">
+                Données: SITG / OCEN
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Le potentiel photovoltaïque genevois</h1>
+                <p>Découvrez comment les toits de notre canton peuvent contribuer à la transition énergétique, sur la
+                    base des données officielles du cadastre solaire.</p>
+            </div>
+        </section>
+
+        <section class="container edu-block animate-on-scroll">
+            <h2>Comprendre les données</h2>
+            <p>
+                L'État de Genève s'engage pour la transition énergétique. Pour accompagner les citoyens, l'Office
+                cantonal de l'énergie (OCEN) a cartographié l'ensemble du territoire à l'aide de lasers aéroportés
+                (technologie LiDAR). Cette cartographie de précision a permis de modéliser l'ensoleillement de chaque
+                mètre carré de toiture.
+            </p>
+
+            <div class="edu-box">
+                <strong>Pourquoi un seuil de 800 kWh/m²/an ?</strong>
+                Pour vous garantir une installation intéressante, le modèle officiel a volontairement exclu les zones
+                trop à l'ombre (arbres, immeubles voisins) ou mal orientées.
+                Seuls les toits recevant au minimum 800 kWh d'énergie solaire par mètre carré et par an ont été retenus.
+                Cela garantit que l'investissement initial sera couvert par l'énergie produite, permettant d'atteindre
+                une véritable rentabilité économique.
+            </div>
+
+            <h2>Le modèle économique : L'installation, le coût et l'entretien</h2>
+            <p>
+                La rentabilité ne se limite pas à produire du courant : elle compare ce que coûte l'installation de
+                départ à ce qu'elle rapporte sur sa durée de vie.
+                Les données fournies ici (frais d'investissement, charges, recettes) ont été rigoureusement calculées
+                par le projet <a href="https://apps.sitg-lab.ch/solaire/" target="_blank">transfrontalier G2
+                    Solaire</a>.
+            </p>
+            <p>
+                Ce modèle inclut non seulement l'achat et la pose des panneaux photovoltaïques, mais également leur
+                entretien régulier.
+                Il part du principe que l'installation optimale permet de couvrir une part de votre consommation
+                (autoconsommation, qui allège votre facture) et que l'excédent produit est revendu sur le réseau,
+                selon les tarifs d'achat et de rachat officiels de l'électricité en vigueur dans le Grand Genève.
+            </p>
+
+            <h2>La protection du patrimoine : Un gardiennage nécessaire</h2>
+            <p>
+                Certaines toitures affichent un potentiel solaire exceptionnel, mais se trouvent en zone de protection
+                patrimoniale.
+                L'État de Genève, dans son rôle de gardien, veille à préserver la cohérence historique et la beauté
+                architecturale de notre canton.
+                Ces zones ne sont donc pas immédiatement accessibles pour la pose standard de panneaux solaires, ou
+                nécessitent des intégrations spécifiques (comme des tuiles solaires) souvent plus onéreuses.
+            </p>
+            <p>
+                Plutôt que d'y voir un frein, ces données nous permettent de nous concentrer sur l'essentiel :
+                <strong>le formidable potentiel libre de contraintes</strong> que nous pouvons équiper dès aujourd'hui.
+            </p>
+        </section>
+
+        <!-- DASHBOARD (Chiffres globaux) -->
+        <section class="dashboard-section animate-on-scroll">
+            <div class="container">
+                <h2 class="section-title">Le Cadastre Solaire en Chiffres</h2>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-label">Production Potentielle (Toits viables)</div>
+                        <div class="kpi-value solar" id="kpi-gwh">--</div>
+                        <div class="kpi-unit">Gigawattheures (GWh) par an</div>
+                        <div class="kpi-desc">L'énergie annuelle que nous pourrions récolter.</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Impact Climatique</div>
+                        <div class="kpi-value eco" id="kpi-co2">--</div>
+                        <div class="kpi-unit">Milliers de tonnes de CO₂ évitées</div>
+                        <div class="kpi-desc">La réduction d'émissions de gaz à effet de serre.</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Temps de Retour Moyen</div>
+                        <div class="kpi-value neutral" id="kpi-roi">--</div>
+                        <div class="kpi-unit">Années d'autofinancement</div>
+                        <div class="kpi-desc">Une fois cette période passée, l'énergie produite est un bénéfice net.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3 class="chart-title">Rentabilité Globale (ROI)</h3>
+                        <p class="chart-desc">Répartition du nombre de toitures selon la durée d'amortissement de
+                            l'installation photovoltaïque.</p>
+                        <div class="chart-container">
+                            <canvas id="chartROI"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3 class="chart-title">Potentiel Solaire et Patrimoine</h3>
+                        <p class="chart-desc">Énergie accessible immédiatement face aux toitures soumises à protection
+                            architecturale.</p>
+                        <div class="chart-container">
+                            <canvas id="chartPatrimoine"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card full-width">
+                        <h3 class="chart-title">Les communes au plus fort potentiel d'action</h3>
+                        <p class="chart-desc">Le classement des communes du <strong>Grand Genève (incluant Vaud et la
+                                France voisine)</strong> disposant du plus grand potentiel solaire "libre" (sans
+                            contrainte patrimoniale) et très rentable (amorti en moins de 15 ans).</p>
+                        <div class="chart-container">
+                            <canvas id="chartCommunes"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAP SEARCH SECTION -->
+        <section class="map-section animate-on-scroll">
+            <div class="container">
+                <h2 class="section-title">Découvrez le potentiel de votre bâtiment</h2>
+
+                <div class="search-box">
+                    <input type="text" id="addressSearch" class="search-input"
+                        placeholder="Tapez une adresse genevoise (ex: rue de l'encyclopédie 20)...">
+                    <div id="searchResults"
+                        style="position: absolute; top: 100%; left: 0; right: 0; background: white; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; max-height: 300px; overflow-y: auto; display: none;">
+                    </div>
+                </div>
+
+                <div class="map-container-wrapper">
+                    <!-- Contrôles Thématiques -->
+                    <div class="map-controls">
+                        <div class="control-group">
+                            <label for="themeSelect">Visualiser par :</label>
+                            <select id="themeSelect" class="theme-select">
+                                <option value="roi">Rentabilité (Retour sur investissement)</option>
+                                <option value="production">Production d'énergie (MWh/an)</option>
+                            </select>
+                        </div>
+                        <div class="theme-legend" id="themeLegend">
+                            <!-- Rempli en JS -->
+                        </div>
+                    </div>
+
+                    <!-- Overlay de Zoom -->
+                    <div id="zoomWarning" class="zoom-warning">
+                        <div class="zoom-warning-content">
+                            <span class="icon">🔍</span>
+                            <p>Rapprochez-vous (zoomez) pour faire apparaître les toitures du quartier.</p>
+                        </div>
+                    </div>
+
+                    <div id="map"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PASSER À L'ACTION SECTION -->
+        <section class="action-section animate-on-scroll" style="padding: 6rem 0; background-color: white;">
+            <div class="container">
+                <h2 class="section-title">Passer à l'action : Qui peut vous aider ?</h2>
+                <p
+                    style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--color-text-muted); font-size: 1.15rem; font-family: var(--font-body);">
+                    Maintenant que vous connaissez votre potentiel, plusieurs organismes genevois et suisses sont là
+                    pour vous accompagner techniquement et financièrement dans votre projet.
+                </p>
+
+                <div class="kpi-grid" style="gap: 2rem;">
+                    <!-- Acteur 1 : L'État / GEnergie -->
+                    <a href="https://www.ge.ch/dossier/transition-energetique" target="_blank" class="kpi-card"
+                        style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">GEnergie &
+                            État de Genève</h3>
+                        <p class="kpi-desc" style="margin-top: 0; color: var(--color-text-muted);">Le programme cantonal
+                            officiel pour l'énergie. Retrouvez les directives, les subventions cantonales additionnelles
+                            et les démarches d'autorisation.</p>
+                    </a>
+
+                    <!-- Acteur 2 : SIG -->
+                    <a href="https://ww2.sig-ge.ch/particuliers/offres/solaire/offres-solaires/producteur-solaire"
+                        target="_blank" class="kpi-card"
+                        style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">SIG
+                            (Services Industriels)</h3>
+                        <p class="kpi-desc" style="margin-top: 0; color: var(--color-text-muted);">Partenaire
+                            incontournable pour le raccordement de vos panneaux au réseau genevois et la fixation des
+                            tarifs de rachat de votre électricité.</p>
+                    </a>
+
+                    <!-- Acteur 3 : Pronovo -->
+                    <a href="https://pronovo.ch/fr/" target="_blank" class="kpi-card"
+                        style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">Pronovo
+                            (Confédération)</h3>
+                        <p class="kpi-desc" style="margin-top: 0; color: var(--color-text-muted);">L'organe de la
+                            Confédération qui gère la "Rétribution Unique" (RU), la subvention fédérale principale qui
+                            couvre jusqu'à 30% de l'investissement initial.</p>
+                    </a>
+
+                    <!-- Acteur 4 : Associations (SSES) -->
+                    <a href="https://www.sses.ch/fr/regional-und-fachgruppen/rso/" target="_blank" class="kpi-card"
+                        style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <h3 style="color: var(--color-text-main); margin-bottom: 0.5rem; font-size: 1.3rem;">SSES</h3>
+                        <p class="kpi-desc" style="margin-top: 0; color: var(--color-text-muted);">La Société Suisse
+                            pour l'Énergie Solaire. Une association neutre idéale pour obtenir des conseils indépendants
+                            et rencontrer d'autres producteurs.</p>
+                    </a>
+
+                    <!-- Acteur 5 : SITG (Professionnels) -->
+                    <a href="https://apps.sitg-lab.ch/solaire/" target="_blank" class="kpi-card"
+                        style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; grid-column: 1 / -1; max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(241, 245, 249, 0.9)); border: 1px solid rgba(148, 163, 184, 0.5);">
+                        <h3 style="color: #0f172a; margin-bottom: 0.5rem; font-size: 1.3rem;">Cadastre Solaire Officiel (Outil Expert)</h3>
+                        <p class="kpi-desc" style="margin-top: 0; color: var(--color-text-muted);">Vous êtes un professionnel du domaine (installateur, architecte, urbaniste) ou vous cherchez des données techniques brutes (modèles 3D, API) ? Consultez le cadastre solaire interactif expert du SITG.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Créé à partir des données OpenData du <a href="https://ge.ch/sitg/" style="color: #6ee7b7;">SITG</a> et
+                de l'Office cantonal de l'énergie.</p>
+            <p
+                style="margin-top: 1rem; max-width: 600px; margin-inline: auto; font-size: 0.8rem; line-height: 1.5; color: #64748b;">
+                "La couche du potentiel photovoltaïque par bâtiment (EGID) représente et regroupe les informations
+                relatives au potentiel d'énergie PV... Ces données sont calculées dans le cas d'une rentabilité
+                économique optimale."
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bibliothèques -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Fichiers locaux -->
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

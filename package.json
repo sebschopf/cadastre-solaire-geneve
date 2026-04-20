@@ -1,0 +1,11 @@
+{
+  "name": "solaire-geneve-pedagogique",
+  "version": "1.0.0",
+  "description": "Plateforme pédagogique sur le potentiel solaire à Genève",
+  "scripts": {
+    "dev": "npx serve ."
+  },
+  "keywords": ["solaire", "geneve", "opendata", "sitg"],
+  "author": "",
+  "license": "ISC"
+}
