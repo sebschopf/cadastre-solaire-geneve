@@ -1,3 +1,5 @@
+import { fetchBuildings } from './apiService.js';
+
 export function initMap() {
     const map = L.map('map').setView([46.2044, 6.1432], 13); // Centré sur Genève
 
@@ -109,20 +111,11 @@ export function initMap() {
         }
 
         const bounds = map.getBounds();
-        const bbox = `${bounds.getWest()},${bounds.getSouth()},${bounds.getEast()},${bounds.getNorth()}`;
+        const features = await fetchBuildings(bounds);
         
-        // Utilisation de notre propre proxy serverless (Vercel) pour éviter le blocage CORS
-        const sitgUrl = `https://vector.sitg.ge.ch/arcgis/rest/services/OCEN_SOLAIRE_PV_BATIMENT/FeatureServer/0/query?geometry=${bbox}&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID,ADRESSE,PV_AN_TOT,CO2,INVEST_TOT,GAINS_AN,PATRIM&outSR=4326&f=geojson`;
-        const url = `/api/proxy?url=${encodeURIComponent(sitgUrl)}`;
-
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            if (data.features) {
-                renderDynamicFeatures(data.features);
-            }
-        } catch (e) {
-            console.error("Erreur de chargement BBOX", e);
+        // fetchBuildings renvoie null si la requête a été annulée (AbortController)
+        if (features && features.length > 0) {
+            renderDynamicFeatures(features);
         }
     }
 
@@ -167,7 +160,14 @@ export function initMap() {
     }
 
     // --- EVENTS ---
-    map.on('moveend', loadBuildingsInView);
+    let mapMoveTimer;
+    map.on('moveend', () => {
+        clearTimeout(mapMoveTimer);
+        // Debounce de 300ms avant de déclencher la requête
+        mapMoveTimer = setTimeout(() => {
+            loadBuildingsInView();
+        }, 300);
+    });
     
     themeSelect.addEventListener('change', (e) => {
         currentTheme = e.target.value;

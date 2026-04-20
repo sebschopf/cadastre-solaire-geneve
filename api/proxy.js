@@ -5,6 +5,12 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'URL is required' });
   }
 
+  // SECURITE (SRP) : Ce proxy est dédié uniquement au SITG.
+  // On bloque toute tentative d'utiliser notre serveur Vercel pour attaquer d'autres sites (SSRF).
+  if (!url.startsWith('https://vector.sitg.ge.ch/')) {
+    return res.status(403).json({ error: 'Accès refusé. Ce proxy est réservé aux données de l\'État de Genève.' });
+  }
+
   try {
     const response = await fetch(decodeURIComponent(url));
     const data = await response.json();
