@@ -1,2 +1,6 @@
 node_modules/
 OCEN_SOLAIRE_PV_BATIMENT-CSV/
+
+# Fichiers de travail locaux
+*.pdf
+image.png
