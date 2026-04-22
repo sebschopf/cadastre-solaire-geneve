@@ -1,0 +1,308 @@
+/* ═══════════════════════════════════════════════════════
+   MODÈLE A4 PREMIUM - CADASTRE SOLAIRE
+   ───────────────────────────────────
+   Stratégie d'impression (gérée par printService.js):
+   • @page margin: 0 → on contrôle tout manuellement
+   • header/footer: position:absolute dans chaque .print-page
+     → un header et footer par page, pas de fixed global
+   • pagination, numérotation : 100% JS (printService.js)
+   • Aucun counter-increment CSS, aucun hack @page
+
+   Références normatives appliquées:
+   • CSS Paged Media Level 3     https://www.w3.org/TR/css-page-3/
+     → @page, size, margin, page boxes
+   • CSS Fragmentation Level 4   https://www.w3.org/TR/css-break-4/
+     → break-before, break-after, break-inside
+     → orphans, widows (§3.4)
+   • CSS Print Profile           https://www.w3.org/TR/css-print/
+     → Recommandations d'impression navigateur
+   ═══════════════════════════════════════════════════════ */
+
+/* ── RÈGLES DE PAGE (normative CSS Paged Media Level 3) ── */
+@page {
+    size: A4 portrait;
+    margin: 0;  /* printService.js gère les marges via padding JS */
+}
+
+/* Première page : pas de saut forcé avant */
+@page :first {
+    margin: 0;
+}
+
+/* ── MASQUER TOUT SAUF LE DOSSIER ───────────────────── */
+@media print {
+    body > *:not(#sidePanel) {
+        display: none !important;
+    }
+}
+
+html, body {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    color: black !important;
+    font-size: 10pt;
+    line-height: 1.5;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* Contrôle des veuves/orphelines (normative CSS Fragmentation Level 4)
+   Minimum 2 lignes visibles en bas et en haut de page */
+p, li {
+    orphans: 2;
+    widows: 2;
+}
+
+/* ── RESET PANNEAU ──────────────────────────────────── */
+.side-panel {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.side-panel-content {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    transform: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* ── CONTAINER CORPS DU PANNEAU ─────────────────────── */
+.side-panel-body {
+    margin: 0 !important;
+    padding: 0 !important;  /* Les .print-page ont leur propre padding */
+    overflow: visible !important;
+    display: block !important;
+}
+
+/* ── PAGE IMPRIMÉE ──────────────────────────────────── */
+/* Chaque .print-page correspond à une feuille A4 physique.
+   position: relative → nécessaire pour que les absolute enfants
+   (header, footer) se positionnent DANS cette page. */
+.print-page {
+    position: relative !important;
+    width: 100% !important;
+    height: 297mm !important;              /* Hauteur exacte A4 */
+    box-sizing: border-box !important;
+    padding: 20mm 10mm 20mm 20mm !important; /* Header:20mm + Footer:20mm */
+    /* Sauts de page (syntaxe moderne + ancienne pour compatibilité) */
+    break-after: page;
+    page-break-after: always;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    overflow: hidden !important;           /* Jamais de débordement hors A4 */
+    background: white !important;
+}
+
+/* Suppression du saut forcé sur la DERNIÈRE page → géré par JS */
+.print-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+}
+
+/* ── EN-TÊTE DE PAGE ────────────────────────────────── */
+/* position: absolute DANS .print-page (qui est position:relative)
+   → un header propre par page, aucun chevauchement */
+.print-fixed-header {
+    display: grid !important;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    align-items: center;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 20mm !important;
+    padding: 5mm 10mm 5mm 20mm !important;
+    font-size: 8.5pt;
+    color: #666 !important;
+    background: white !important;
+    border-bottom: 0.5pt solid #ddd !important;
+    box-sizing: border-box !important;
+    /* Empêche la coupure du header lui-même */
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* ── PIED DE PAGE ───────────────────────────────────── */
+/* position: absolute DANS .print-page
+   Numérotation "Page X / Y" injectée par printService.js */
+.print-fixed-footer {
+    display: grid !important;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    align-items: center;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 20mm !important;
+    padding: 5mm 10mm 5mm 20mm !important;
+    font-size: 8pt;
+    color: #888 !important;
+    background: white !important;
+    border-top: 0.5pt solid #eee !important;
+    box-sizing: border-box !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.ph-left,   .pf-left   { text-align: left; }
+.ph-center, .pf-center { text-align: center; }
+.ph-right,  .pf-right  { text-align: right; font-weight: 600; color: #333 !important; }
+
+/* ── ZONE DE CONTENU DE PAGE ────────────────────────── */
+.page-content {
+    display: block !important;
+    width: 100% !important;
+    height: 257mm !important; /* 297mm - 20mm header - 20mm footer = 257mm */
+    overflow: hidden !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* ── CONTENU : TITRE ET SECTIONS ────────────────────── */
+
+.panel-header-doc {
+    margin-bottom: 8mm !important;
+}
+
+.panel-title {
+    font-size: 22pt !important;
+    margin-bottom: 4mm !important;
+    color: #000 !important;
+    font-weight: 900;
+    /* Le titre principal ne doit jamais être coupé de la suite */
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+.panel-subtitle {
+    font-size: 12pt !important;
+    color: #555 !important;
+    margin-bottom: 6mm !important;
+}
+
+.panel-address {
+    font-size: 11pt !important;
+    margin-bottom: 6mm !important;
+    color: #222 !important;
+}
+
+/* ── SECTIONS : GESTION DES COUPURES ───────────────────
+   break-inside: avoid → pas de coupure au milieu d'une section
+   break-before: avoid → pas de saut isolé avant (veuves)
+   Ces propriétés travaillent AVEC la pagination JS
+   ───────────────────────────────────────────────────── */
+.panel-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-before: avoid;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Titre de section : rester attaché au contenu qui suit */
+.panel-section-title {
+    /* Empêche un saut de page ENTRE le titre et le paragraphe suivant */
+    break-after: avoid;
+    page-break-after: avoid;
+    /* Empêche le titre seul en bas de page */
+    break-before: avoid;
+    page-break-before: avoid;
+    font-size: 15pt !important;
+    color: #b45309 !important;
+    border-bottom: 1pt solid #fbbf24 !important;
+    margin-top: 6mm !important;
+    margin-bottom: 4mm !important;
+    padding-top: 4mm !important;   /* ← 4mm au lieu de 20mm (bug corrigé) */
+    padding-bottom: 3mm !important;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Grilles de stats */
+.panel-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6mm !important;
+    margin-bottom: 5mm !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.panel-stat {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.panel-stat-label {
+    display: block;
+    font-size: 9.5pt;
+    color: #555 !important;
+    text-transform: uppercase;
+    margin-bottom: 1mm;
+}
+
+.panel-stat-val {
+    display: block;
+    font-size: 14pt !important;
+    color: #000 !important;
+    font-weight: 800;
+}
+
+.panel-stat-sub {
+    display: block;
+    font-size: 9pt;
+    color: #666 !important;
+    margin-top: 1mm;
+}
+
+/* Encarts (Notes, Equivalences) : jamais coupés */
+.panel-note, .panel-equivalence {
+    background: #fffbeb !important;
+    border: 0.5pt solid #fef3c7 !important;
+    border-left: 4pt solid #f59e0b !important;
+    padding: 5mm !important;
+    margin-top: 4mm !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* Utilitaires couleurs */
+.eco-text, .success-text { color: #166534 !important; }
+.neutral-text            { color: #374151 !important; }
+
+/* ── SUPPRESSION ÉLÉMENTS UI ────────────────────────── */
+.print-header-cover { display: none !important; }
+
+.side-panel-overlay,
+.side-panel-close,
+.side-panel-actions,
+.btn-popup {
+    display: none !important;
+}
+
+/* ── PIED DE DOCUMENT (dernière section) ────────────── */
+.panel-footer-info {
+    margin-top: 8mm !important;
+    border-top: 0.75pt solid #ddd !important;
+    padding-top: 5mm !important;
+    font-size: 9pt !important;
+    color: #555 !important;
+    text-align: center;
+    font-style: italic;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
