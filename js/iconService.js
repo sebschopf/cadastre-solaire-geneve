@@ -41,6 +41,8 @@ const ICONS = {
     'file-text'     : lucideIcons.FileText,
     'search'        : lucideIcons.Search,
     'zoom-in'       : lucideIcons.ZoomIn,
+    'x'             : lucideIcons.X,
+    'printer'       : lucideIcons.Printer,
 
     // Domaine solaire
     'sun'           : lucideIcons.Sun,

@@ -67,33 +67,44 @@
     /* AAA */
 
     /* --- Famille Danger / Alerte (messages d'erreur) --- */
-    --color-danger-bg   : oklch(0.97 0.020 var(--hue-danger)); /* Fond rouge pâle */
-    --color-danger-text : oklch(0.55 0.200 var(--hue-danger)); /* Texte rouge AAA sur fond danger-bg */
-    --color-danger-main : oklch(0.60 0.200 var(--hue-danger)); /* Couleur d'accent rouge */
+    --color-danger-bg: oklch(0.97 0.020 var(--hue-danger));
+    /* Fond rouge pâle */
+    --color-danger-text: oklch(0.55 0.200 var(--hue-danger));
+    /* Texte rouge AAA sur fond danger-bg */
+    --color-danger-main: oklch(0.60 0.200 var(--hue-danger));
+    /* Couleur d'accent rouge */
 
     /* --- Tokens de glassmorphisme ---
      * Ces valeurs semi-transparentes ne peuvent pas être exprimées via un token
      * solide ; elles sont déclarées ici pour rester en un seul endroit. */
-    --color-glass-white-85 : oklch(1 0 0 / 0.85); /* Header sticky */
-    --color-glass-white-80 : oklch(1 0 0 / 0.80); /* Carte kpi-card */
-    --color-glass-white-00 : oklch(1 0 0 / 0);    /* Transparent blanc (gradient) */
-    --color-glass-solar-08 : oklch(0.72 0.16 var(--hue-solar) / 0.08); /* Halo hero */
-    --color-glass-solar-10 : oklch(0.72 0.16 var(--hue-solar) / 0.10); /* Déco citation */
-    --color-glass-neutral-07: oklch(0.75 0.015 var(--hue-neutral) / 0.07); /* Grille de fond body */
-    --color-glass-border   : oklch(0.90 0.010 var(--hue-neutral) / 0.80); /* Bordures vitreux */
-    --color-glass-shadow   : oklch(0 0 0 / 0.02);  /* Ombre header */
+    --color-glass-white-85: oklch(1 0 0 / 0.85);
+    /* Header sticky */
+    --color-glass-white-80: oklch(1 0 0 / 0.80);
+    /* Carte kpi-card */
+    --color-glass-white-00: oklch(1 0 0 / 0);
+    /* Transparent blanc (gradient) */
+    --color-glass-solar-08: oklch(0.72 0.16 var(--hue-solar) / 0.08);
+    /* Halo hero */
+    --color-glass-solar-10: oklch(0.72 0.16 var(--hue-solar) / 0.10);
+    /* Déco citation */
+    --color-glass-neutral-07: oklch(0.75 0.015 var(--hue-neutral) / 0.07);
+    /* Grille de fond body */
+    --color-glass-border: oklch(0.90 0.010 var(--hue-neutral) / 0.80);
+    /* Bordures vitreux */
+    --color-glass-shadow: oklch(0 0 0 / 0.02);
+    /* Ombre header */
 
     /* --- Shadows & Effects --- */
-    --shadow-subtle : 0 4px 20px -2px oklch(0.20 0.010 var(--hue-neutral) / 0.05);
-    --shadow-hover  : 0 10px 30px -5px oklch(0.20 0.010 var(--hue-neutral) / 0.10);
-    --shadow-glow   : 0 0 20px oklch(0.72 0.16 var(--hue-solar) / 0.20);
+    --shadow-subtle: 0 4px 20px -2px oklch(0.20 0.010 var(--hue-neutral) / 0.05);
+    --shadow-hover: 0 10px 30px -5px oklch(0.20 0.010 var(--hue-neutral) / 0.10);
+    --shadow-glow: 0 0 20px oklch(0.72 0.16 var(--hue-solar) / 0.20);
 
     /* --- Typographie --- */
-    --font-ui   : 'Outfit', 'Inter', system-ui, sans-serif, 'Atkinson Hyperlegible', 'OpenDyslexic', dyslexic;
-    --font-body : 'Lora', Georgia, serif, 'Atkinson Hyperlegible', 'OpenDyslexic', dyslexic;
+    --font-ui: 'Outfit', 'Inter', system-ui, sans-serif, 'Atkinson Hyperlegible', 'OpenDyslexic', dyslexic;
+    --font-body: 'Lora', Georgia, serif, 'Atkinson Hyperlegible', 'OpenDyslexic', dyslexic;
 
     /* --- Transitions --- */
-    --transition-smooth : all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* =============================================================================
@@ -226,7 +237,8 @@ a:hover {
 
 /* --- Logo header --- */
 .logo-icon {
-    color: var(--color-solar-main); /* OKLCH — hérite via currentColor */
+    color: var(--color-solar-main);
+    /* OKLCH — hérite via currentColor */
     display: inline-flex;
     align-items: center;
 }
@@ -241,6 +253,25 @@ a:hover {
     border: 1px solid var(--color-heritage-light);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+}
+
+.nav-lexique-btn {
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-main);
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    min-height: 44px; /* WCAG AAA: taille minimale cible tactile 44x44px */
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.15s ease;
+}
+
+.nav-lexique-btn:hover {
+    background: var(--color-surface-subtle);
+    color: var(--color-solar-main);
 }
 
 .data-source-badge:hover {
@@ -555,7 +586,8 @@ a:hover {
 /* Message "aucun résultat" dans la liste de recherche */
 .search-no-results {
     padding: 1rem;
-    color: var(--color-text-muted); /* OKLCH AAA — pas de hardcode */
+    color: var(--color-text-muted);
+    /* OKLCH AAA — pas de hardcode */
     font-size: 0.9rem;
     font-family: var(--font-ui);
     text-align: center;
@@ -585,7 +617,7 @@ a:hover {
 .leaflet-popup-content {
     margin: 0 !important;
     padding: 1rem !important;
-    width: 280px !important;
+    width: 320px !important;
 }
 
 /* Popup Custom */
@@ -857,4 +889,284 @@ a:hover {
     100% {
         box-shadow: 0 0 0 0 oklch(0.72 0.16 var(--hue-solar) / 0);
     }
+}
+
+/* =============================================================================
+   SIDE PANEL (DOSSIER SOLAIRE)
+   ============================================================================= */
+
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 10000;
+    pointer-events: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.side-panel.is-open {
+    pointer-events: auto;
+}
+
+.side-panel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: oklch(0.2 0.01 var(--hue-neutral) / 0.5);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.side-panel.is-open .side-panel-overlay {
+    opacity: 1;
+}
+
+.side-panel-content {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    background: var(--color-bg);
+    height: 100%;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.side-panel.is-open .side-panel-content {
+    transform: translateX(0);
+}
+
+.side-panel-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 2;
+}
+
+.side-panel-close:hover {
+    color: var(--color-danger-main);
+}
+
+.side-panel-body {
+    padding: 3rem 2rem 2rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.panel-title {
+    font-size: 2rem;
+    color: var(--color-text-main);
+    margin-bottom: 0.5rem;
+}
+
+.panel-header-doc {
+    margin-bottom: 2.5rem;
+}
+
+.panel-address {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-solar-dark);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.panel-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+}
+
+.panel-text {
+    font-size: 0.95rem;
+    color: var(--color-text-body);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.panel-note {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--color-bg);
+    border-left: 3px solid var(--color-heritage-main);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    border-radius: 0 8px 8px 0;
+}
+
+.panel-equivalence {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: oklch(0.96 0.02 var(--hue-eco));
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--color-eco-text);
+}
+
+.panel-equivalence ul {
+    margin-top: 0.75rem;
+    list-style: none;
+    padding-left: 0;
+}
+
+.panel-equivalence li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.panel-section {
+    margin-bottom: 3.5rem;
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.panel-section-title {
+    font-size: 1.1rem;
+    color: var(--color-solar-dark);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-heritage-light);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+}
+
+.panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 400px) {
+    .panel-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.panel-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.panel-stat-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.panel-stat-val {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+}
+
+.panel-stat-sub {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: var(--color-text-muted);
+}
+
+.eco-text {
+    color: var(--color-eco-dark);
+}
+
+.success-text {
+    color: var(--color-eco-dark);
+}
+
+.neutral-text {
+    color: var(--color-text-main);
+}
+
+.side-panel-actions {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--color-heritage-light);
+    background: var(--color-surface-subtle);
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: var(--color-solar-main);
+    color: var(--color-surface);
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: var(--font-ui);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px oklch(0.72 0.16 var(--hue-solar) / 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--color-solar-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px oklch(0.72 0.16 var(--hue-solar) / 0.4);
+}
+
+.panel-footer-info {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.panel-footer-info a {
+    color: var(--color-solar-main);
+    text-decoration: underline;
+}
+
+.panel-credit {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-subtle);
+    opacity: 0.8;
+}
+
+.popup-actions {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-heritage-light);
+    display: flex;
+    justify-content: center;
+}
+
+.btn-popup {
+    padding: 0.7rem 1.6rem;
+    font-size: 0.95rem;
+    min-width: 220px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.print-only {
+    display: none !important;
 }

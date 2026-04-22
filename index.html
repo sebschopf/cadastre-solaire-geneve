@@ -53,6 +53,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
     <link rel="stylesheet" href="css/lexique.css">
 </head>
 
@@ -67,6 +68,13 @@
                 <span class="logo-icon" data-icon="sun" data-icon-size="22" data-icon-label="Solaire Genève"></span>
                 Solaire Genève
             </div>
+            <nav aria-label="Navigation principale">
+                <a href="lexique.html" class="nav-lexique-btn"
+                    aria-label="Consulter le lexique des termes solaires">
+                    <span class="icon" data-icon="book-open" data-icon-size="16" aria-hidden="true"></span>
+                    Lexique
+                </a>
+            </nav>
             <a href="https://opendata.swiss/fr/dataset/potentiel-photovoltaique-pv-par-batiment1" target="_blank"
                 rel="noopener noreferrer" class="data-source-badge"
                 aria-label="Source des données : SITG / OCEN (ouvre dans un nouvel onglet)">
@@ -217,7 +225,9 @@
                     <!-- aria-live=polite : annonce les résultats dès qu'ils arrivent, sans interrompre -->
                     <div id="searchResults" role="listbox" aria-label="Résultats de recherche d'adresse"
                         aria-live="polite"
-                        style="position: absolute; top: 100%; left: 0; right: 0; background: white; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; max-height: 300px; overflow-y: auto; display: none;">
+                        style="position: absolute; top: 100%; left: 0; right: 0; background: white; z-index: 1000; 
+                        box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; max-height: 300px; 
+                        overflow-y: auto; display: none;">
                     </div>
                 </div>
 
@@ -246,7 +256,8 @@
                     </div>
 
                     <div id="map" role="application"
-                        aria-label="Carte interactive du potentiel solaire des bâtiments genevois. Naviguez avec les touches fléchées une fois la carte focalisée."
+                        aria-label="Carte interactive du potentiel solaire des bâtiments genevois. 
+                        Naviguez avec les touches fléchées une fois la carte focalisée."
                         tabindex="0"></div>
                 </div>
             </div>
@@ -346,6 +357,41 @@
     <!-- Bibliothèques -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Side Panel / Dossier Solaire -->
+    <aside id="sidePanel" class="side-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="sidePanelTitle">
+        <div class="side-panel-overlay" id="sidePanelOverlay" aria-label="Fermer le panneau"></div>
+        <div class="side-panel-content">
+            <button class="side-panel-close" id="sidePanelCloseBtn" aria-label="Fermer le panneau">
+                <span class="icon" data-icon="x" data-icon-size="24"></span>
+            </button>
+
+            <!-- En-tête impression (page 2+) : 3 colonnes -->
+            <div class="print-only print-fixed-header" id="printHeader" aria-hidden="true">
+                <span class="ph-col ph-left"  id="printHeaderAddress"></span>
+                <span class="ph-col ph-center" id="printHeaderDate"></span>
+                <span class="ph-col ph-right">Rapport de Potentiel Solaire</span>
+            </div>
+
+            <div id="sidePanelBody" class="side-panel-body">
+                <!-- Contenu injecté dynamiquement -->
+            </div>
+
+            <!-- Pied de page impression (toutes les pages) : 3 colonnes -->
+            <div class="print-only print-fixed-footer" aria-hidden="true">
+                <span class="pf-col pf-left">cadastre-solaire-geneve.ch</span>
+                <span class="pf-col pf-center">Propulsé avec bienveillance par Solar by Sébastien Schopfer</span>
+                <span class="pf-col pf-right">Page —</span>
+            </div>
+
+            <div class="side-panel-actions">
+                <button class="btn-primary" id="sidePanelPrintBtn">
+                    <span class="icon" data-icon="printer" data-icon-size="18"></span>
+                    Imprimer / Télécharger en PDF
+                </button>
+            </div>
+        </div>
+    </aside>
 
     <!-- Fichiers locaux -->
     <script type="module" src="js/app.js"></script>
